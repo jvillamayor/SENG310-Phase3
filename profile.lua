@@ -32,7 +32,7 @@ function scene:create( event )
     local email = display.newText("Email", 160, 240, "Avenir", 20)
     email:setFillColor(0,0,0)
     email.x = 50
-    email.y = 210
+    email.y = 205
 
 
     local emailinput = native.newTextField(160, 240, 220, 30)
@@ -40,58 +40,146 @@ function scene:create( event )
     emailinput.placeholder = "user@gmail.com"
     emailinput.font = native.newFont("Avenir")
     emailinput.x = 200
-    emailinput.y = 210
+    emailinput.y = 205
     sceneGroup:insert(emailinput)
 
 
     local age = display.newText("Age", 160, 240, "Avenir", 20)
     age:setFillColor(0,0,0)
     age.x = 45
-    age.y = 245
+    age.y = 240
 
     local ageinput = native.newTextField(160, 240, 220, 30)
     ageinput.inputType = "11/10/1994"
     ageinput.placeholder = "11/10/1994"
     ageinput.font = native.newFont("Avenir")
     ageinput.x = 200
-    ageinput.y = 245
+    ageinput.y = 240
 
     local gender = display.newText("Gender", 160, 240, "Avenir", 20)
     gender:setFillColor(0,0,0)
     gender.x = 58
-    gender.y = 280
+    gender.y = 275
 
     local genderinput = native.newTextField(160, 240, 220, 30)
     genderinput.inputType = "Male"
     genderinput.placeholder = "Male"
     genderinput.font = native.newFont("Avenir")
     genderinput.x = 220
-    genderinput.y = 280
+    genderinput.y = 275
 
     local weight = display.newText("Weight", 160, 240, "Avenir", 20)
     weight:setFillColor(0,0,0)
     weight.x = 58
-    weight.y = 315
+    weight.y = 310
 
     local weightinput = native.newTextField(160, 240, 220, 30)
     weightinput.inputType = "87kg"
     weightinput.placeholder = "87kg"
     weightinput.font = native.newFont("Avenir")
     weightinput.x = 220
-    weightinput.y = 315
+    weightinput.y = 310
 
     local height = display.newText("Height", 160, 240, "Avenir", 20)
     height:setFillColor(0,0,0)
-    height.x = 58
-    height.y = 350
+    height.x = 55
+    height.y = 345
 
     local heightinput = native.newTextField(160, 240, 220, 30)
     heightinput.inputType = "178cm"
     heightinput.placeholder = "178cm"
     heightinput.font = native.newFont("Avenir")
     heightinput.x = 220
-    heightinput.y = 350
+    heightinput.y = 345
 
+    local diet = display.newText("Dietary Restrictions", 160, 240, "Avenir", 20)
+    diet:setFillColor(0,0,0)
+    diet.x = 110
+    diet.y = 380
+
+    local update = display.newText("Update", 160, 240, "Avenir", 18)
+    update:setFillColor(0,0,0)
+    update.x = 270
+    update.y = 490
+
+
+    local function onSwitchPress( event )
+    local switch = event.target
+    print( "Switch with ID '"..switch.id.."' is on: "..tostring(switch.isOn) )
+    end
+     
+    local peanut = display.newText("Peanut", 160, 240, "Avenir", 15)
+    peanut:setFillColor(0,0,0)
+    peanut.x = 108
+    peanut.y = 408
+
+    local peanutButton = widget.newSwitch(
+        {
+            left = 250,
+            top = 200,
+            style = "checkbox",
+            id = "Checkbox",
+            onPress = onSwitchPress
+        }
+    )
+    peanutButton:scale(0.5,0.5)
+    peanutButton.x = 60
+    peanutButton.y = 408
+
+    local milk = display.newText("Milk", 160, 240, "Avenir", 15)
+    milk:setFillColor(0,0,0)
+    milk.x = 100
+    milk.y = 428
+
+    local milkButton = widget.newSwitch(
+        {
+            left = 250,
+            top = 200,
+            style = "checkbox",
+            id = "Checkbox",
+            onPress = onSwitchPress
+        }
+    )
+    milkButton:scale(0.5,0.5)
+    milkButton.x = 60
+    milkButton.y = 428
+
+    local egg = display.newText("Egg", 160, 240, "Avenir", 15)
+    egg:setFillColor(0,0,0)
+    egg.x = 100
+    egg.y = 448
+
+    local eggButton = widget.newSwitch(
+        {
+            left = 250,
+            top = 200,
+            style = "checkbox",
+            id = "Checkbox",
+            onPress = onSwitchPress
+        }
+    )
+    eggButton:scale(0.5,0.5)
+    eggButton.x = 60
+    eggButton.y = 448
+
+        
+    local vegan = display.newText("Vegan", 160, 240, "Avenir", 15)
+    vegan:setFillColor(0,0,0)
+    vegan.x = 108
+    vegan.y = 468
+
+    local veganButton = widget.newSwitch(
+        {
+            left = 250,
+            top = 200,
+            style = "checkbox",
+            id = "Checkbox",
+            onPress = onSwitchPress
+        }
+    )
+    veganButton:scale(0.5,0.5)
+    veganButton.x = 60
+    veganButton.y = 468
 
 
 
