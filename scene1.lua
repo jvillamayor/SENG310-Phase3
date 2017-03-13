@@ -10,8 +10,10 @@ local widget = require("widget")
 local function changeScenes()
     composer.gotoScene("menu2", {effect="slideLeft", time=500})
 end
- 
- 
+
+local function navBarReveal (event)
+    panel:show()
+end
  
 -- -----------------------------------------------------------------------------------
 -- Scene event functions
@@ -21,26 +23,27 @@ end
 function scene:create( event )
     local sceneGroup = self.view
 
+    local bg = display.newRect(display.contentCenterX, display.contentCenterY, display.actualContentWidth, display.actualContentHeight)
+    bg:setFillColor(1, 1, 1)
+    sceneGroup:insert(bg)
+
     local logo = display.newImage("assets/logo.png")
     logo.x = 160; logo.y = 220
     sceneGroup:insert(logo)
 
     local myTextObject = display.newText("Recipe Finder", 160, 240, "Avenir",45)
-    print("Hello World!")
     myTextObject:setFillColor(0,0,0)
-    display.setDefault( "background", 1, 1, 1 )
     myTextObject.y = 50
     sceneGroup:insert(myTextObject)
 
     local username = native.newTextField(150, 370, 220, 36)
     sceneGroup:insert(username)
-
     username.inputType = "username"
     username.placeholder = "username"
+    
     local password = native.newTextField(150, 430, 220, 36)
     password.inputType = "password"
     password.placeholder = "password"
-
     sceneGroup:insert(password)
 
 
@@ -63,6 +66,8 @@ function scene:create( event )
 
     signin.y = 480
     signin.x = 160
+
+    --if (password)
 
     sceneGroup:insert(signin)
     signin:addEventListener("tap", changeScenes)
