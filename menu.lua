@@ -13,14 +13,8 @@ local scene = composer.newScene()
 local logo = display.newImage("assets/logo.png")
 logo.x = 160; logo.y = 200
 
-<<<<<<< HEAD
 local myTextObject = display.newText("Recipe Finder", 160, 240, "Avenir", 45)
-=======
 local myTextObject = display.newText("Recipe Finder", 160, 240, "Avenir",45)
-<<<<<<< Updated upstream
-=======
->>>>>>> origin/master
->>>>>>> Stashed changes
 myTextObject:setFillColor(0,0,0)
 display.setDefault( "background", 1, 1, 1 )
 myTextObject.y = 30
@@ -61,9 +55,6 @@ local signin = widget.newButton(
 signin.y = 480
 signin.x = 160
 
-
-<<<<<<< Updated upstream
-=======
 
 local create = widget.newButton(
 {
@@ -114,7 +105,6 @@ forgot.x = 160
 
 -------------------------------------------<><><><<><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
 
->>>>>>> Stashed changes
 -- -----------------------------------------------------------------------------------
 -- Code outside of the scene event functions below will only be executed ONCE unless
 -- the scene is removed entirely (not recycled) via "composer.removeScene()"
