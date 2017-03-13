@@ -273,6 +273,30 @@ function scene:create( event )
     options      = dropdownOptions
   }
 
+local function reveal()
+    if (navReveal == true) then
+        emailinput.isVisible = false
+        genderinput.isVisible = false
+        ageinput.isVisible = false
+        genderinput.isVisible = false
+        weightinput.isVisible = false
+        heightinput.isVisible = false
+        navReveal = false
+
+    else
+        emailinput.isVisible = true
+        genderinput.isVisible = true
+        ageinput.isVisible = true
+        genderinput.isVisible = true
+        weightinput.isVisible = true
+        heightinput.isVisible = true
+        navReveal = true
+    end
+    -- body
+end
+
+navReveal = true
+button:addEventListener("tap", reveal)
 
 
 end
