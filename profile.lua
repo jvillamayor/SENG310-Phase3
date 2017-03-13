@@ -247,8 +247,8 @@ function scene:create( event )
   local button = widget.newButton{
     width       = 50,
     height      = 50,
-    defaultFile = 'assets/backbutton.png',
-    overFile    = 'assets/backbutton.png',
+    defaultFile = 'assets/burger.png',
+    overFile    = 'assets/burger.png',
     onEvent     = function( event )
       local target = event.target
       local phase  = event.phase

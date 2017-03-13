@@ -52,7 +52,7 @@ local dropdownOptions = {
   {
     title     = 'Recipes',
     action    = function() 
-      native.showAlert('Dropdown', 'Dropdown', {'Ok'})
+      composer.gotoScene("recipes")
     end 
   },
   {
@@ -95,10 +95,10 @@ local dropdownOptions = {
 }
 
 local button = widget.newButton{
-  width       = 50,
-  height      = 50,
-  defaultFile = 'assets/backbutton.png',
-  overFile    = 'assets/backbutton.png',
+  width       = 30,
+  height      = 30,
+  defaultFile = 'assets/burger.png',
+  overFile    = 'assets/burger.png',
   onEvent     = function( event )
     local target = event.target
     local phase  = event.phase
