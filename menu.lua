@@ -11,18 +11,25 @@ local scene = composer.newScene()
 
 
 local logo = display.newImage("assets/logo.png")
-logo.x = 160; logo.y = 220
+logo.x = 160; logo.y = 200
 
+<<<<<<< HEAD
+local myTextObject = display.newText("Recipe Finder", 160, 240, "Avenir", 45)
+=======
 local myTextObject = display.newText("Recipe Finder", 160, 240, "Avenir",45)
+<<<<<<< Updated upstream
+=======
+>>>>>>> origin/master
+>>>>>>> Stashed changes
 myTextObject:setFillColor(0,0,0)
 display.setDefault( "background", 1, 1, 1 )
-myTextObject.y = 50
+myTextObject.y = 30
 
-local username = native.newTextField(150, 370, 220, 36)
+local username = native.newTextField(150, 340, 220, 30)
 
 username.inputType = "username"
 username.placeholder = "username"
-local password = native.newTextField(150, 430, 220, 36)
+local password = native.newTextField(150, 380, 220, 30)
 password.inputType = "password"
 password.placeholder = "password"
 
@@ -39,11 +46,11 @@ local signin = widget.newButton(
 	left = 120,
 	right = 200,
 	id = "signin",
-	label = "Default",
+	label = "Sign in",
 	onEvent = handleButtonEvent,
 	shape = "roundedRect",
 	width =200,
-	height = 40,
+	height = 30,
 	cornerRadius = 2,
 	fillColor = { default = {165,198,209,0}, over= {165,198,209,0} },
 	strokeColor = { default = {1,1,1,1}, over= {1, 0.1,0.7,0.4} },
@@ -54,8 +61,60 @@ local signin = widget.newButton(
 signin.y = 480
 signin.x = 160
 
+
+<<<<<<< Updated upstream
+=======
+
+local create = widget.newButton(
+{
+    left = 120,
+    right = 200,
+    id = "createaccount",
+    label = "Create new account",
+    onEvent = handleButtonEvent,
+    shape = "roundedRect",
+    width =200,
+    height = 30,
+    cornerRadius = 2,
+    fillColor = { default = {165,198,209,0}, over= {165,198,209,0} },
+    strokeColor = { default = {1,1,1,1}, over= {1, 0.1,0.7,0.4} },
+    strokeWidth = 4
+}
+    )
+
+create.y = 460
+create.x = 160
+
+
+local forgot = widget.newButton(
+{
+    left = 120,
+    right = 200,
+    id = "forgotpass",
+    label = "Forgot password?",
+    onEvent = handleButtonEvent,
+    shape = "roundedRect",
+    width =200,
+    height = 30,
+    cornerRadius = 2,
+    fillColor = { default = {165,198,209,0}, over= {165,198,209,0} },
+    strokeColor = { default = {1,1,1,1}, over= {1, 0.1,0.7,0.4} },
+    strokeWidth = 4
+}
+    )
+
+forgot.y = 495
+forgot.x = 160
+
+
+
+
+
+
+
 -------------------------------------------<><><><<><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
 
+>>>>>>> Stashed changes
 -- -----------------------------------------------------------------------------------
 -- Code outside of the scene event functions below will only be executed ONCE unless
 -- the scene is removed entirely (not recycled) via "composer.removeScene()"

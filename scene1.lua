@@ -8,7 +8,7 @@ local widget = require("widget")
 -- the scene is removed entirely (not recycled) via "composer.removeScene()"
 -- -----------------------------------------------------------------------------------
 local function changeScenes()
-    composer.gotoScene("menu2", {effect="slideLeft", time=500})
+    composer.gotoScene("scene2", {effect="slideLeft", time=500})
 end
  
  
@@ -22,22 +22,22 @@ function scene:create( event )
     local sceneGroup = self.view
 
     local logo = display.newImage("assets/logo.png")
-    logo.x = 160; logo.y = 220
+    logo.x = 160; logo.y = 200
     sceneGroup:insert(logo)
 
     local myTextObject = display.newText("Recipe Finder", 160, 240, "Avenir",45)
     print("Hello World!")
     myTextObject:setFillColor(0,0,0)
     display.setDefault( "background", 1, 1, 1 )
-    myTextObject.y = 50
+    myTextObject.y = 45
     sceneGroup:insert(myTextObject)
 
-    local username = native.newTextField(150, 370, 220, 36)
+    local username = native.newTextField(150, 350, 220, 36)
     sceneGroup:insert(username)
 
     username.inputType = "username"
     username.placeholder = "username"
-    local password = native.newTextField(150, 430, 220, 36)
+    local password = native.newTextField(150, 395, 220, 36)
     password.inputType = "password"
     password.placeholder = "password"
 
@@ -61,12 +61,61 @@ function scene:create( event )
     }
         )
 
-    signin.y = 480
+    signin.y = 435
     signin.x = 160
 
+    local create = widget.newButton(
+    {
+    left = 120,
+    right = 200,
+    id = "createaccount",
+    label = "Create new account",
+    onEvent = handleButtonEvent,
+    shape = "roundedRect",
+    width =200,
+    height = 30,
+    cornerRadius = 2,
+    fillColor = { default = {165,198,209,0}, over= {165,198,209,0} },
+    strokeColor = { default = {1,1,1,1}, over= {1, 0.1,0.7,0.4} },
+    strokeWidth = 4
+    }
+         )
+
+    create.y = 465
+    create.x = 160
+    
+    local forgot = widget.newButton(
+    {
+    left = 120,
+    right = 200,
+    id = "forgotpass",
+    label = "Forgot password?",
+    onEvent = handleButtonEvent,
+    shape = "roundedRect",
+    width =200,
+    height = 20,
+    cornerRadius = 2,
+    fillColor = { default = {165,198,209,0}, over= {165,198,209,0} },
+    strokeColor = { default = {1,1,1,1}, over= {1, 0.1,0.7,0.4} },
+    strokeWidth = 4
+    }
+        )
+
+    forgot.y = 495
+    forgot.x = 160
+
+
+
     sceneGroup:insert(signin)
+    sceneGroup:insert(create)
+    sceneGroup:insert(forgot)
     signin:addEventListener("tap", changeScenes)
- 
+
+
+
+
+
+
     
     -- Code here runs when the scene is first created but has not yet appeared on screen
     
