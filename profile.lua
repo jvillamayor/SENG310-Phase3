@@ -18,22 +18,23 @@ function scene:create( event )
     local myTextObject = display.newText("Profile", 160, 240, "Avenir", 20)
     myTextObject:setFillColor(0,0,0)
     myTextObject.y = 5
-
+    sceneGroup:insert(myTextObject)
 
     local profilepic = display.newImage("assets/pp.png")
     profilepic.x = 160; profilepic.y = 90
-    sceneGroup:insert(profilepic)
     profilepic:scale( 0.4, 0.4 )
+    sceneGroup:insert(profilepic)
 
     local name = display.newText("Alan Cooper", 160, 240, "Avenir", 20)
     name:setFillColor(0,0,0)
     name.y = 163
+    sceneGroup:insert(name)
 
     local email = display.newText("Email", 160, 240, "Avenir", 20)
     email:setFillColor(0,0,0)
     email.x = 50
     email.y = 205
-
+    sceneGroup:insert(email)
 
     local emailinput = native.newTextField(160, 240, 220, 30)
     emailinput.inputType = "user@gmail.com"
@@ -43,11 +44,11 @@ function scene:create( event )
     emailinput.y = 205
     sceneGroup:insert(emailinput)
 
-
     local age = display.newText("Age", 160, 240, "Avenir", 20)
     age:setFillColor(0,0,0)
     age.x = 45
     age.y = 240
+    sceneGroup:insert(age)
 
     local ageinput = native.newTextField(160, 240, 220, 30)
     ageinput.inputType = "11/10/1994"
@@ -55,11 +56,13 @@ function scene:create( event )
     ageinput.font = native.newFont("Avenir")
     ageinput.x = 200
     ageinput.y = 240
+    sceneGroup:insert(ageinput)
 
     local gender = display.newText("Gender", 160, 240, "Avenir", 20)
     gender:setFillColor(0,0,0)
     gender.x = 58
     gender.y = 275
+    sceneGroup:insert(gender)
 
     local genderinput = native.newTextField(160, 240, 220, 30)
     genderinput.inputType = "Male"
@@ -67,11 +70,13 @@ function scene:create( event )
     genderinput.font = native.newFont("Avenir")
     genderinput.x = 220
     genderinput.y = 275
+    sceneGroup:insert(genderinput)
 
     local weight = display.newText("Weight", 160, 240, "Avenir", 20)
     weight:setFillColor(0,0,0)
     weight.x = 58
     weight.y = 310
+    sceneGroup:insert(weight)
 
     local weightinput = native.newTextField(160, 240, 220, 30)
     weightinput.inputType = "87kg"
@@ -79,11 +84,13 @@ function scene:create( event )
     weightinput.font = native.newFont("Avenir")
     weightinput.x = 220
     weightinput.y = 310
+    sceneGroup:insert(weightinput)
 
     local height = display.newText("Height", 160, 240, "Avenir", 20)
     height:setFillColor(0,0,0)
     height.x = 55
     height.y = 345
+    sceneGroup:insert(height)
 
     local heightinput = native.newTextField(160, 240, 220, 30)
     heightinput.inputType = "178cm"
@@ -91,16 +98,19 @@ function scene:create( event )
     heightinput.font = native.newFont("Avenir")
     heightinput.x = 220
     heightinput.y = 345
+    sceneGroup:insert(heightinput)
 
     local diet = display.newText("Dietary Restrictions", 160, 240, "Avenir", 20)
     diet:setFillColor(0,0,0)
     diet.x = 110
     diet.y = 380
+    sceneGroup:insert(diet)
 
     local update = display.newText("Update", 160, 240, "Avenir", 18)
     update:setFillColor(0,0,0)
     update.x = 270
     update.y = 490
+    sceneGroup:insert(update)
 
 
     local function onSwitchPress( event )
@@ -112,6 +122,7 @@ function scene:create( event )
     peanut:setFillColor(0,0,0)
     peanut.x = 108
     peanut.y = 408
+    sceneGroup:insert(peanut)
 
     local peanutButton = widget.newSwitch(
         {
@@ -125,11 +136,13 @@ function scene:create( event )
     peanutButton:scale(0.5,0.5)
     peanutButton.x = 60
     peanutButton.y = 408
+    sceneGroup:insert(peanutButton)
 
     local milk = display.newText("Milk", 160, 240, "Avenir", 15)
     milk:setFillColor(0,0,0)
     milk.x = 100
     milk.y = 428
+    sceneGroup:insert(milk)
 
     local milkButton = widget.newSwitch(
         {
@@ -143,11 +156,13 @@ function scene:create( event )
     milkButton:scale(0.5,0.5)
     milkButton.x = 60
     milkButton.y = 428
+    sceneGroup:insert(milkButton)
 
     local egg = display.newText("Egg", 160, 240, "Avenir", 15)
     egg:setFillColor(0,0,0)
     egg.x = 100
     egg.y = 448
+    sceneGroup:insert(egg)
 
     local eggButton = widget.newSwitch(
         {
@@ -161,12 +176,13 @@ function scene:create( event )
     eggButton:scale(0.5,0.5)
     eggButton.x = 60
     eggButton.y = 448
-
+    sceneGroup:insert(eggButton)
         
     local vegan = display.newText("Vegan", 160, 240, "Avenir", 15)
     vegan:setFillColor(0,0,0)
     vegan.x = 108
     vegan.y = 468
+    sceneGroup:insert(vegan)
 
     local veganButton = widget.newSwitch(
         {
@@ -180,14 +196,7 @@ function scene:create( event )
     veganButton:scale(0.5,0.5)
     veganButton.x = 60
     veganButton.y = 468
-
-
-
-
-
-
-
-
+    sceneGroup:insert(veganButton)
 
 
   local myDropdown
@@ -196,14 +205,13 @@ function scene:create( event )
     {
       title     = 'User Profile',
       action    = function() 
-        native.showAlert('Dropdown', 'Dropdown', {'Ok'})
+        composer.gotoScene("profile")
       end 
     },
     {
       title     = 'Recipes',
       action    = function() 
               composer.gotoScene("recipes")
-
       end 
     },
     {
@@ -340,7 +348,8 @@ end
 -- destroy()
 function scene:destroy( event )
 
-  --  local sceneGroup = self.view
+  
+  local sceneGroup = self.view
     -- Code here runs prior to the removal of scene's view
 
 end
@@ -357,4 +366,3 @@ scene:addEventListener( "destroy", scene )
 -- -----------------------------------------------------------------------------------
 
 return scene
-
