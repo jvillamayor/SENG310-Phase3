@@ -24,8 +24,10 @@ function scene:create( event )
     title.x = 100
     title.y = 70
 
-
-
+    local ethnicity = display.newText("Ethnicity", 160, 240, "Avenir", 18)
+    ethnicity:setFillColor(0,0,0)
+    ethnicity.x = 80
+    ethnicity.y = 120
 
 
 
@@ -111,7 +113,6 @@ function scene:create( event )
     padding      = 20,
     options      = dropdownOptions
   }
-
 
 
 end

@@ -111,7 +111,7 @@ function Dropdown.new( o )
 
   overlay:addEventListener( 'touch', overlay )
   overlay.isVisible = false
-
+  
   button.x = 40
   button.y = 8
   group:insert( button )
