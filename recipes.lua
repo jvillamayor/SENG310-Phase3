@@ -19,8 +19,18 @@ function scene:create( event )
     myTextObject:setFillColor(0,0,0)
     myTextObject.y = 5
 
+    local title = display.newText("Choose Category", 160, 240, "Avenir", 18)
+    title:setFillColor(0,0,0)
+    title.x = 100
+    title.y = 70
 
 
+
+
+
+
+
+--- DROPDOWN MENU
   local myDropdown
 
   local dropdownOptions = {
@@ -75,10 +85,8 @@ function scene:create( event )
   }
 
   local button = widget.newButton{
-    width       = 50,
-    height      = 50,
-    defaultFile = 'assets/backbutton.png',
-    overFile    = 'assets/backbutton.png',
+    width       = 30,
+    height      = 30,
     onEvent     = function( event )
       local target = event.target
       local phase  = event.phase

@@ -202,7 +202,8 @@ function scene:create( event )
     {
       title     = 'Recipes',
       action    = function() 
-        native.showAlert('Dropdown', 'Dropdown', {'Ok'})
+              composer.gotoScene("recipes")
+
       end 
     },
     {
@@ -247,8 +248,6 @@ function scene:create( event )
   local button = widget.newButton{
     width       = 50,
     height      = 50,
-    defaultFile = 'assets/burger.png',
-    overFile    = 'assets/burger.png',
     onEvent     = function( event )
       local target = event.target
       local phase  = event.phase
