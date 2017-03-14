@@ -5,12 +5,19 @@
 --
 -----------------------------------------------------------------------------------------
 
-local composer = require( "composer" )
+local composer = require("composer")
 local widget = require("widget")
 local dropdown = require('dropdown')
 local screen = require('screen')
 local scene = composer.newScene()
-   
+
+--Function to delay the removal of the scene, smoothing out the transition between scenes
+local function delayedSceneRemoval()
+    local function removeSceneListener(event)
+        composer.removeScene("profile")
+    end
+    timer.performWithDelay(500, removeSceneListener)
+end
 
 function scene:create( event )
     local sceneGroup = self.view
@@ -114,8 +121,8 @@ function scene:create( event )
 
 
     local function onSwitchPress( event )
-    local switch = event.target
-    print( "Switch with ID '"..switch.id.."' is on: "..tostring(switch.isOn) )
+        local switch = event.target
+        print( "Switch with ID '"..switch.id.."' is on: "..tostring(switch.isOn) )
     end
      
     local peanut = display.newText("Peanut", 160, 240, "Avenir", 15)
@@ -204,14 +211,24 @@ function scene:create( event )
   local dropdownOptions = {
     {
       title     = 'User Profile',
+<<<<<<< refs/remotes/origin/master
       action    = function() 
         composer.gotoScene("profile")
+=======
+      action    = function()
+>>>>>>> Fixed problem with removing scene
       end 
     },
     {
       title     = 'Recipes',
+<<<<<<< refs/remotes/origin/master
       action    = function() 
               composer.gotoScene("recipes")
+=======
+      action    = function()
+                  delayedSceneRemoval()
+                  composer.gotoScene("recipes")
+>>>>>>> Fixed problem with removing scene
       end 
     },
     {
@@ -281,35 +298,32 @@ function scene:create( event )
     options      = dropdownOptions
   }
 
-local function reveal()
-    if (navReveal == true) then
-        emailinput.isVisible = false
-        genderinput.isVisible = false
-        ageinput.isVisible = false
-        genderinput.isVisible = false
-        weightinput.isVisible = false
-        heightinput.isVisible = false
-        navReveal = false
+    local function reveal()
+        if (navReveal == true) then
+            emailinput.isVisible = false
+            genderinput.isVisible = false
+            ageinput.isVisible = false
+            genderinput.isVisible = false
+            weightinput.isVisible = false
+            heightinput.isVisible = false
+            navReveal = false
 
-    else
-        emailinput.isVisible = true
-        genderinput.isVisible = true
-        ageinput.isVisible = true
-        genderinput.isVisible = true
-        weightinput.isVisible = true
-        heightinput.isVisible = true
-        navReveal = true
+        else
+            emailinput.isVisible = true
+            genderinput.isVisible = true
+            ageinput.isVisible = true
+            genderinput.isVisible = true
+            weightinput.isVisible = true
+            heightinput.isVisible = true
+            navReveal = true
+        end
+        -- body
     end
-    -- body
-end
 
-navReveal = true
-button:addEventListener("tap", reveal)
-
+    navReveal = true
+    button:addEventListener("tap", reveal)
 
 end
-
-
 
 
 
@@ -347,10 +361,16 @@ end
 
 -- destroy()
 function scene:destroy( event )
+<<<<<<< refs/remotes/origin/master
 
   
   local sceneGroup = self.view
+=======
+    print("running scene destroy, is this actually doing anything?")
+   local sceneGroup = self.view
+>>>>>>> Fixed problem with removing scene
     -- Code here runs prior to the removal of scene's view
+
 
 end
 
