@@ -5,11 +5,18 @@
 --
 -----------------------------------------------------------------------------------------
 
-local composer = require( "composer" )
+local composer = require("composer")
 local widget = require("widget")
 local dropdown = require('dropdown')
 local screen = require('screen')
 local scene = composer.newScene()
+
+local function delayedSceneRemoval()
+    local function removeSceneListener(event)
+        composer.removeScene("recipes")
+    end
+    timer.performWithDelay(500, removeSceneListener)
+end
    
 
 function scene:create( event )
@@ -18,16 +25,19 @@ function scene:create( event )
     local myTextObject = display.newText("Recipes", 160, 240, "Avenir", 20)
     myTextObject:setFillColor(0,0,0)
     myTextObject.y = 5
+    sceneGroup:insert(myTextObject)
 
     local title = display.newText("Choose Category", 160, 240, "Avenir", 18)
     title:setFillColor(0,0,0)
     title.x = 100
     title.y = 70
+    sceneGroup:insert(title)
 
     local ethnicity = display.newText("Ethnicity", 160, 240, "Avenir", 18)
     ethnicity:setFillColor(0,0,0)
     ethnicity.x = 80
     ethnicity.y = 120
+    sceneGroup:insert(ethnicity)
 
 
 
@@ -38,7 +48,9 @@ function scene:create( event )
   local dropdownOptions = {
     {
       title     = 'User Profile',
-      action    = function() 
+      action    = function()
+        delayedSceneRemoval() 
+        composer.gotoScene("profile")
       end 
     },
     {

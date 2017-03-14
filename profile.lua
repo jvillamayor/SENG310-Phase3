@@ -11,6 +11,8 @@ local dropdown = require('dropdown')
 local screen = require('screen')
 local scene = composer.newScene()
 
+print("In Profile Scene")
+
 --Function to delay the removal of the scene, smoothing out the transition between scenes
 local function delayedSceneRemoval()
     local function removeSceneListener(event)
@@ -211,15 +213,11 @@ function scene:create( event )
   local dropdownOptions = {
     {
       title     = 'User Profile',
-      action    = function() 
-        composer.gotoScene("profile")
       action    = function()
       end 
     },
     {
       title     = 'Recipes',
-      action    = function() 
-              composer.gotoScene("recipes")
       action    = function()
                   delayedSceneRemoval()
                   composer.gotoScene("recipes")
@@ -356,8 +354,6 @@ end
 -- destroy()
 function scene:destroy( event )
   local sceneGroup = self.view
-    print("running scene destroy, is this actually doing anything?")
-   local sceneGroup = self.view
     -- Code here runs prior to the removal of scene's view
 
 

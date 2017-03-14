@@ -7,6 +7,9 @@ local widget = require("widget")
 -- Code outside of the scene event functions below will only be executed ONCE unless
 -- the scene is removed entirely (not recycled) via "composer.removeScene()"
 -- -----------------------------------------------------------------------------------
+
+print("In scene1 Scene")
+
 local function changeScenes()
     composer.gotoScene("scene2", {effect="slideLeft", time=500})
 end
