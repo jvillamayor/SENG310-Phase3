@@ -211,24 +211,18 @@ function scene:create( event )
   local dropdownOptions = {
     {
       title     = 'User Profile',
-<<<<<<< refs/remotes/origin/master
       action    = function() 
         composer.gotoScene("profile")
-=======
       action    = function()
->>>>>>> Fixed problem with removing scene
       end 
     },
     {
       title     = 'Recipes',
-<<<<<<< refs/remotes/origin/master
       action    = function() 
               composer.gotoScene("recipes")
-=======
       action    = function()
                   delayedSceneRemoval()
                   composer.gotoScene("recipes")
->>>>>>> Fixed problem with removing scene
       end 
     },
     {
@@ -361,14 +355,9 @@ end
 
 -- destroy()
 function scene:destroy( event )
-<<<<<<< refs/remotes/origin/master
-
-  
   local sceneGroup = self.view
-=======
     print("running scene destroy, is this actually doing anything?")
    local sceneGroup = self.view
->>>>>>> Fixed problem with removing scene
     -- Code here runs prior to the removal of scene's view
 
 
