@@ -144,7 +144,7 @@ function scene:create( event )
 
     local function scrollListener( event )
      
-        local phase = event.phas
+        local phase = event.phase
         return true
     end
      local scrollBarOpt = {
@@ -160,11 +160,11 @@ function scene:create( event )
             y = 238,
             x = 160,
             width = 500,
-            height = 300,
-            scrollWidth = 250,
+            height = 300,  
+            scrollWidth = 500,
             scrollHeight = 300,
+            hideBackground = false,
             listener = scrollListener,
-            hideBackground = true,
             horizontalScrollDisabled = true,
         }
     )
@@ -189,6 +189,20 @@ function scene:create( event )
     sceneGroup:insert(scrollView)
 
 
+    local function reveal()
+        if (navReveal == true) then
+            scrollView.isVisible = false
+            background.isVisible = false
+            navReveal = false
+        else
+            scrollView.isVisible = true
+            background.isVisible = true
+            navReveal = true
+        end
+    end
+
+    navReveal = true
+    button:addEventListener("tap", reveal)
 
 
     end
