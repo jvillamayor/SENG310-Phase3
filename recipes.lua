@@ -52,63 +52,6 @@ function scene:create( event )
     calories.y = 200
     sceneGroup:insert(calories)
 
-<<<<<<< HEAD
-=======
---- DROPDOWN MENU
-  local myDropdown
-
-  local dropdownOptions = {
-    {
-      title     = 'User Profile',
-      action    = function()
-        delayedSceneRemoval() 
-        composer.gotoScene("profile")
-      end 
-    },
-    {
-      title     = 'Recipes',
-      action    = function() 
-        native.showAlert('Dropdown', 'Dropdown', {'Ok'})
-      end 
-    },
-    {
-      title     = 'Saved Recipes',
-      action    = function() 
-        native.showAlert('Dropdown', 'Dropdown', {'Ok'})
-      end 
-    },
-    {
-      title     = '7 Day Planner',
-      action    = function() 
-        native.showAlert('Dropdown', 'Dropdown', {'Ok'})
-      end 
-    },
-    {
-      title     = 'Health Tracker',
-      action    = function() 
-        native.showAlert('Dropdown', 'Dropdown', {'Ok'})
-      end 
-    },
-    {
-      title     = 'Group Meal Planner',
-      action    = function() 
-        native.showAlert('Dropdown', 'Dropdown', {'Ok'})
-      end 
-    },
-    {
-      title     = 'Help and Support',
-      action    = function() 
-        native.showAlert('Dropdown', 'Dropdown', {'Ok'})
-      end 
-    },
-    {
-      title     = 'Log Out',
-      action    = function() 
-        native.showAlert('Dropdown', 'Dropdown', {'Ok'})
-      end 
-    }
->>>>>>> origin/master
-
     local calories_ex = display.newText("210kCal", 160, 240, "Avenir", 15)
     calories_ex:setFillColor(0,0,0)
     calories_ex.x = 200

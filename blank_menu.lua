@@ -14,7 +14,7 @@ local scene = composer.newScene()
 print("In scene 'blank_menu'")
 local function delayedSceneRemoval()
     local function removeSceneListener(event)
-        composer.removeScene("scene2")
+        composer.removeScene("blank_menu")
     end
     timer.performWithDelay(500, removeSceneListener)
 end

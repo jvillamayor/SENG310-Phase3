@@ -212,21 +212,9 @@ function scene:create( event )
 
   local dropdownOptions = {
     {
-<<<<<<< HEAD
       title     = 'Recipes',
-      action    = function() 
+      action    = function()
         composer.gotoScene("recipes")
-=======
-      title     = 'User Profile',
-      action    = function()
-      end 
-    },
-    {
-      title     = 'Recipes',
-      action    = function()
-                  delayedSceneRemoval()
-                  composer.gotoScene("recipes")
->>>>>>> origin/master
       end 
     },
     {
