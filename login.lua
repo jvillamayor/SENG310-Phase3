@@ -1,22 +1,19 @@
+-----------------------------------------------------------------------------------------
+--
+-- login.lua
+-- Cara Pekson, Aman Bhayani, Julius Villamayor
+--
+-----------------------------------------------------------------------------------------
+
 local composer = require( "composer" )
  
 local scene = composer.newScene()
  
 local widget = require("widget")
--- -----------------------------------------------------------------------------------
--- Code outside of the scene event functions below will only be executed ONCE unless
--- the scene is removed entirely (not recycled) via "composer.removeScene()"
--- -----------------------------------------------------------------------------------
 
 local function changeScenes()
     composer.gotoScene("blank_menu", {effect="slideLeft", time=500})
 end
- 
- 
- 
--- -----------------------------------------------------------------------------------
--- Scene event functions
--- -----------------------------------------------------------------------------------
  
 -- create()
 function scene:create( event )
@@ -44,84 +41,72 @@ function scene:create( event )
 
     sceneGroup:insert(password)
 
-
     local signin = widget.newButton(
-    {
-        left = 120,
-        right = 200,
-        id = "signin",
-        label = "Sign In",
-        onEvent = handleButtonEvent,
-        shape = "roundedRect",
-        width =200,
-        height = 40,
-        cornerRadius = 2,
-        fillColor = { default = {165,198,209,0}, over= {165,198,209,0} },
-        strokeColor = { default = {1,1,1,1}, over= {1, 0.1,0.7,0.4} },
-        strokeWidth = 4
-    }
-        )
+        {
+            left = 120,
+            right = 200,
+            id = "signin",
+            label = "Sign In",
+            onEvent = handleButtonEvent,
+            shape = "roundedRect",
+            width =200,
+            height = 40,
+            cornerRadius = 2,
+            fillColor = { default = {165,198,209,0}, over= {165,198,209,0} },
+            strokeColor = { default = {1,1,1,1}, over= {1, 0.1,0.7,0.4} },
+            strokeWidth = 4
+        }
+    )
 
     signin.y = 435
     signin.x = 160
 
     local create = widget.newButton(
-    {
-    left = 120,
-    right = 200,
-    id = "createaccount",
-    label = "Create new account",
-    onEvent = handleButtonEvent,
-    shape = "roundedRect",
-    width =200,
-    height = 30,
-    cornerRadius = 2,
-    fillColor = { default = {165,198,209,0}, over= {165,198,209,0} },
-    strokeColor = { default = {1,1,1,1}, over= {1, 0.1,0.7,0.4} },
-    strokeWidth = 4
-    }
-         )
+        {
+            left = 120,
+            right = 200,
+            id = "createaccount",
+            label = "Create new account",
+            onEvent = handleButtonEvent,
+            shape = "roundedRect",
+            width =200,
+            height = 30,
+            cornerRadius = 2,
+            fillColor = { default = {165,198,209,0}, over= {165,198,209,0} },
+            strokeColor = { default = {1,1,1,1}, over= {1, 0.1,0.7,0.4} },
+            strokeWidth = 4
+        }
+    )
 
     create.y = 465
     create.x = 160
     
     local forgot = widget.newButton(
-    {
-    left = 120,
-    right = 200,
-    id = "forgotpass",
-    label = "Forgot password?",
-    onEvent = handleButtonEvent,
-    shape = "roundedRect",
-    width =200,
-    height = 20,
-    cornerRadius = 2,
-    fillColor = { default = {165,198,209,0}, over= {165,198,209,0} },
-    strokeColor = { default = {1,1,1,1}, over= {1, 0.1,0.7,0.4} },
-    strokeWidth = 4
-    }
-        )
+        {
+            left = 120,
+            right = 200,
+            id = "forgotpass",
+            label = "Forgot password?",
+            onEvent = handleButtonEvent,
+            shape = "roundedRect",
+            width =200,
+            height = 20,
+            cornerRadius = 2,
+            fillColor = { default = {165,198,209,0}, over= {165,198,209,0} },
+            strokeColor = { default = {1,1,1,1}, over= {1, 0.1,0.7,0.4} },
+            strokeWidth = 4
+        }
+    )
 
     forgot.y = 495
     forgot.x = 160
-
-
 
     sceneGroup:insert(signin)
     sceneGroup:insert(create)
     sceneGroup:insert(forgot)
     signin:addEventListener("tap", changeScenes)
-
-
-
-
-
-
-    
-    -- Code here runs when the scene is first created but has not yet appeared on screen
     
 end
- 
  
 -- show()
 function scene:show( event )
@@ -171,6 +156,5 @@ scene:addEventListener( "create", scene )
 scene:addEventListener( "show", scene )
 scene:addEventListener( "hide", scene )
 scene:addEventListener( "destroy", scene )
--- -----------------------------------------------------------------------------------
  
 return scene

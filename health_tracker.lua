@@ -11,12 +11,12 @@ local dropdown = require('dropdown')
 local screen = require('screen')
 local scene = composer.newScene()
 
-print("In Scene 'health_tracker'")
+print("In Scene: profile.lua")
 
 --Function to delay the removal of the scene, smoothing out the transition between scenes
 local function delayedSceneRemoval()
     local function removeSceneListener(event)
-        composer.removeScene("profile")
+        composer.removeScene("health_tracker")
     end
     timer.performWithDelay(500, removeSceneListener)
 end
@@ -46,7 +46,7 @@ function scene:create( event )
     {
     title     = 'User Profile',
     action    = function() 
-      -- delayedSceneRemoval()
+      delayedSceneRemoval()
       composer.gotoScene("profile")
     end 
     },
@@ -91,8 +91,10 @@ function scene:create( event )
   }
 
   local button = widget.newButton{
-    width       = 50,
-    height      = 50,
+    width       = 30,
+    height      = 30,
+    defaultFile = 'assets/burger.png',
+    overFile    = 'assets/burger.png',
     onEvent     = function( event )
       local target = event.target
       local phase  = event.phase
@@ -107,6 +109,7 @@ function scene:create( event )
   end
   }
   button.alpha = 10
+  sceneGroup:insert(button)
 
   myDropdown     = dropdown.new {
     x            = screen.rightSide - 50,
@@ -117,6 +120,7 @@ function scene:create( event )
     padding      = 20,
     options      = dropdownOptions
   }
+sceneGroup:insert(myDropdown)
 
 local function reveal()
         if (navReveal == true) then
