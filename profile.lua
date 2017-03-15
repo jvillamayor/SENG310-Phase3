@@ -135,15 +135,13 @@ function scene:create( event )
     peanut.y = 408
     sceneGroup:insert(peanut)
 
-    local peanutButton = widget.newSwitch(
-        {
+    local peanutButton = widget.newSwitch( {
             left = 250,
             top = 200,
             style = "checkbox",
             id = "Checkbox",
             onPress = onSwitchPress
-        }
-    )
+    } )
     peanutButton:scale(0.5,0.5)
     peanutButton.x = 60
     peanutButton.y = 408
@@ -155,15 +153,13 @@ function scene:create( event )
     milk.y = 428
     sceneGroup:insert(milk)
 
-    local milkButton = widget.newSwitch(
-        {
+    local milkButton = widget.newSwitch( {
             left = 250,
             top = 200,
             style = "checkbox",
             id = "Checkbox",
             onPress = onSwitchPress
-        }
-    )
+    } )
     milkButton:scale(0.5,0.5)
     milkButton.x = 60
     milkButton.y = 428
@@ -175,15 +171,13 @@ function scene:create( event )
     egg.y = 448
     sceneGroup:insert(egg)
 
-    local eggButton = widget.newSwitch(
-        {
+    local eggButton = widget.newSwitch( {
             left = 250,
             top = 200,
             style = "checkbox",
             id = "Checkbox",
             onPress = onSwitchPress
-        }
-    )
+    } )
     eggButton:scale(0.5,0.5)
     eggButton.x = 60
     eggButton.y = 448
@@ -195,15 +189,13 @@ function scene:create( event )
     vegan.y = 468
     sceneGroup:insert(vegan)
 
-    local veganButton = widget.newSwitch(
-        {
+    local veganButton = widget.newSwitch( {
             left = 250,
             top = 200,
             style = "checkbox",
             id = "Checkbox",
             onPress = onSwitchPress
-        }
-    )
+    } )
     veganButton:scale(0.5,0.5)
     veganButton.x = 60
     veganButton.y = 468
@@ -219,39 +211,33 @@ function scene:create( event )
                             composer.gotoScene("recipes")
                             composer.gotoScene("recipes")
                         end 
-        },
-        {
+        }, {
             title     = 'Saved Recipes',
             action    = function() 
                             native.showAlert('Dropdown', 'Dropdown', {'Ok'})
                         end 
-        },
-        {
+        }, {
             title     = '7 Day Planner',
             action    = function() 
                             native.showAlert('Dropdown', 'Dropdown', {'Ok'})
                         end 
-        },
-        {
+        }, {
             title     = 'Health Tracker',
             action    = function() 
                             delayedSceneRemoval()
                             composer.gotoScene("health_tracker")
                         end 
-        },
-        {
+        }, {
             title     = 'Group Meal Planner',
             action    = function() 
                             native.showAlert('Dropdown', 'Dropdown', {'Ok'})
                         end 
-        },
-        {
+        }, {
             title     = 'Help and Support',
             action    = function() 
                             native.showAlert('Dropdown', 'Dropdown', {'Ok'})
                         end 
-        },
-        {
+        }, {
             title     = 'Log Out',
             action    = function() 
                             native.showAlert('Dropdown', 'Dropdown', {'Ok'})

@@ -41,8 +41,7 @@ function scene:create( event )
 
     sceneGroup:insert(password)
 
-    local signin = widget.newButton(
-        {
+    local signin = widget.newButton( {
             left = 120,
             right = 200,
             id = "signin",
@@ -55,14 +54,12 @@ function scene:create( event )
             fillColor = { default = {165,198,209,0}, over= {165,198,209,0} },
             strokeColor = { default = {1,1,1,1}, over= {1, 0.1,0.7,0.4} },
             strokeWidth = 4
-        }
-    )
+    } )
 
     signin.y = 435
     signin.x = 160
 
-    local create = widget.newButton(
-        {
+    local create = widget.newButton( {
             left = 120,
             right = 200,
             id = "createaccount",
@@ -75,14 +72,12 @@ function scene:create( event )
             fillColor = { default = {165,198,209,0}, over= {165,198,209,0} },
             strokeColor = { default = {1,1,1,1}, over= {1, 0.1,0.7,0.4} },
             strokeWidth = 4
-        }
-    )
+    } )
 
     create.y = 465
     create.x = 160
     
-    local forgot = widget.newButton(
-        {
+    local forgot = widget.newButton( {
             left = 120,
             right = 200,
             id = "forgotpass",
@@ -95,8 +90,7 @@ function scene:create( event )
             fillColor = { default = {165,198,209,0}, over= {165,198,209,0} },
             strokeColor = { default = {1,1,1,1}, over= {1, 0.1,0.7,0.4} },
             strokeWidth = 4
-        }
-    )
+    } )
 
     forgot.y = 495
     forgot.x = 160
