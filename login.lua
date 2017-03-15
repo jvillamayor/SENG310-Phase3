@@ -47,13 +47,10 @@ function scene:create( event )
             id = "signin",
             label = "Sign In",
             onEvent = handleButtonEvent,
-            shape = "roundedRect",
             width =200,
             height = 40,
-            cornerRadius = 2,
-            fillColor = { default = {165,198,209,0}, over= {165,198,209,0} },
-            strokeColor = { default = {1,1,1,1}, over= {1, 0.1,0.7,0.4} },
-            strokeWidth = 4
+            fillColor = { default = {165,198,209,0}, over= {165,198,209,0} }
+            
     } )
 
     signin.y = 435
@@ -65,13 +62,10 @@ function scene:create( event )
             id = "createaccount",
             label = "Create new account",
             onEvent = handleButtonEvent,
-            shape = "roundedRect",
             width =200,
             height = 30,
-            cornerRadius = 2,
-            fillColor = { default = {165,198,209,0}, over= {165,198,209,0} },
-            strokeColor = { default = {1,1,1,1}, over= {1, 0.1,0.7,0.4} },
-            strokeWidth = 4
+            fillColor = { default = {165,198,209,0}, over= {165,198,209,0} }
+            
     } )
 
     create.y = 465
@@ -83,13 +77,10 @@ function scene:create( event )
             id = "forgotpass",
             label = "Forgot password?",
             onEvent = handleButtonEvent,
-            shape = "roundedRect",
             width =200,
             height = 20,
-            cornerRadius = 2,
-            fillColor = { default = {165,198,209,0}, over= {165,198,209,0} },
-            strokeColor = { default = {1,1,1,1}, over= {1, 0.1,0.7,0.4} },
-            strokeWidth = 4
+            fillColor = { default = {165,198,209,0}, over= {165,198,209,0} }
+            
     } )
 
     forgot.y = 495
