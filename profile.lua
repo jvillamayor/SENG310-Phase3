@@ -203,15 +203,9 @@ function scene:create( event )
 
   local dropdownOptions = {
     {
-      title     = 'User Profile',
-      action    = function() 
-        composer.gotoScene("profile")
-      end 
-    },
-    {
       title     = 'Recipes',
       action    = function() 
-              composer.gotoScene("recipes")
+        composer.gotoScene("recipes")
       end 
     },
     {
@@ -251,11 +245,13 @@ function scene:create( event )
       end 
     }
 
-  }
 
+  }
   local button = widget.newButton{
-    width       = 50,
-    height      = 50,
+    width       = 30,
+    height      = 30,
+    defaultFile = 'assets/burger.png',
+    overFile    = 'assets/burger.png',
     onEvent     = function( event )
       local target = event.target
       local phase  = event.phase
@@ -270,6 +266,7 @@ function scene:create( event )
   end
   }
   button.alpha = 10
+  sceneGroup:insert(button)
 
   myDropdown     = dropdown.new{
     x            = screen.rightSide - 50,
@@ -280,6 +277,7 @@ function scene:create( event )
     padding      = 20,
     options      = dropdownOptions
   }
+  sceneGroup:insert(myDropdown)
 
 local function reveal()
     if (navReveal == true) then

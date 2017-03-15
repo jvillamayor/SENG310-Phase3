@@ -113,6 +113,7 @@ local button = widget.newButton{
   end
 }
 button.alpha = 10
+sceneGroup:insert(button)
 
 myDropdown     = dropdown.new{
   x            = screen.rightSide - 50,
@@ -123,6 +124,7 @@ myDropdown     = dropdown.new{
   padding      = 20,
   options      = dropdownOptions
 }
+sceneGroup:insert(myDropdown)
 
 end
 
