@@ -212,15 +212,10 @@ function scene:create( event )
 
   local dropdownOptions = {
     {
-      title     = 'User Profile',
-      action    = function()
-      end 
-    },
-    {
       title     = 'Recipes',
       action    = function()
-                  delayedSceneRemoval()
-                  composer.gotoScene("recipes")
+                    delayedSceneRemoval()
+                    composer.gotoScene("recipes")
       end 
     },
     {
@@ -238,7 +233,8 @@ function scene:create( event )
     {
       title     = 'Health Tracker',
       action    = function() 
-        native.showAlert('Dropdown', 'Dropdown', {'Ok'})
+                    delayedSceneRemoval()
+                    composer.gotoScene("health_tracker")
       end 
     },
     {

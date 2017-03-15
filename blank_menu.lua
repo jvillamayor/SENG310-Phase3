@@ -12,6 +12,7 @@ local screen = require('screen')
 local scene = composer.newScene()
    
 print("In scene 'blank_menu'")
+
 local function delayedSceneRemoval()
     local function removeSceneListener(event)
         composer.removeScene("scene2")
@@ -65,7 +66,8 @@ local dropdownOptions = {
   {
     title     = 'Health Tracker',
     action    = function() 
-      native.showAlert('Dropdown', 'Dropdown', {'Ok'})
+      delayedSceneRemoval()
+      composer.gotoScene("health_tracker")
     end 
   },
   {
