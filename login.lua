@@ -7,8 +7,9 @@ local widget = require("widget")
 -- Code outside of the scene event functions below will only be executed ONCE unless
 -- the scene is removed entirely (not recycled) via "composer.removeScene()"
 -- -----------------------------------------------------------------------------------
+
 local function changeScenes()
-    composer.gotoScene("scene2", {effect="slideLeft", time=500})
+    composer.gotoScene("blank_menu", {effect="slideLeft", time=500})
 end
  
  
@@ -26,7 +27,7 @@ function scene:create( event )
     sceneGroup:insert(logo)
 
     local myTextObject = display.newText("Recipe Finder", 160, 240, "Avenir",45)
-    print("Hello World!")
+    print("In scene 'login'.")
     myTextObject:setFillColor(0,0,0)
     display.setDefault( "background", 1, 1, 1 )
     myTextObject.y = 45

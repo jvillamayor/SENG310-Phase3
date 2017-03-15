@@ -11,19 +11,13 @@ local dropdown = require('dropdown')
 local screen = require('screen')
 local scene = composer.newScene()
    
-
--------------------------------------------<><><><<><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
-
--- -----------------------------------------------------------------------------------
--- Code outside of the scene event functions below will only be executed ONCE unless
--- the scene is removed entirely (not recycled) via "composer.removeScene()"
--- -----------------------------------------------------------------------------------
-
-
-
--- -----------------------------------------------------------------------------------
--- Scene event functions
--- -----------------------------------------------------------------------------------
+print("In scene 'blank_menu'")
+local function delayedSceneRemoval()
+    local function removeSceneListener(event)
+        composer.removeScene("scene2")
+    end
+    timer.performWithDelay(500, removeSceneListener)
+end
 
 -- create()
 function scene:create( event )
@@ -46,6 +40,7 @@ local dropdownOptions = {
   {
     title     = 'User Profile',
     action    = function() 
+      delayedSceneRemoval()
       composer.gotoScene("profile")
     end 
   },
