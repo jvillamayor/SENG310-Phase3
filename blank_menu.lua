@@ -11,7 +11,7 @@ local dropdown = require('dropdown')
 local screen = require('screen')
 local scene = composer.newScene()
    
-print("In Scene2")
+print("In scene 'blank_menu'")
 local function delayedSceneRemoval()
     local function removeSceneListener(event)
         composer.removeScene("scene2")

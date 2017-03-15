@@ -6,4 +6,4 @@
 -----------------------------------------------------------------------------------------
 
 local composer = require( "composer" )
-composer.gotoScene( "scene1", { effect="fade", time= 500 } )
+composer.gotoScene( "login", { effect="fade", time= 500 } )
