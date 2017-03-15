@@ -27,36 +27,36 @@ function scene:create( event )
     myTextObject.y = 5
     sceneGroup:insert(myTextObject)
 
-    local title = display.newText("Chicken Soup", 160, 240, "Avenir", 18)
-    title:setFillColor(0,0,0)
-    title.x = 160
-    title.y = 70
-    sceneGroup:insert(title)
+    local chickensoup = display.newText("Chicken Soup", 160, 240, "Avenir", 18)
+    chickensoup:setFillColor(0,0,0)
+    chickensoup.x = 160
+    chickensoup.y = 70
+    sceneGroup:insert(chickensoup)
 
-    local ethnicity = display.newText("Tomato Soup", 160, 240, "Avenir", 18)
-    ethnicity:setFillColor(0,0,0)
-    ethnicity.x = 160
-    ethnicity.y = 100
-    sceneGroup:insert(ethnicity)
+    local tomato = display.newText("Tomato Soup", 160, 240, "Avenir", 18)
+    tomato:setFillColor(0,0,0)
+    tomato.x = 160
+    tomato.y = 110
+    sceneGroup:insert(tomato)
 
-    local ethnicity_ex = display.newText("Eggs and Toast", 160, 240, "Avenir", 18)
-    ethnicity_ex:setFillColor(0,0,0)
-    ethnicity_ex.x = 160
-    ethnicity_ex.y = 150
-    sceneGroup:insert(ethnicity_ex)
+    local eggstoast = display.newText("Eggs and Toast", 160, 240, "Avenir", 18)
+    eggstoast:setFillColor(0,0,0)
+    eggstoast.x = 160
+    eggstoast.y = 150
+    sceneGroup:insert(eggstoast)
 
 
-    local calories = display.newText("Grilled Cheese", 160, 240, "Avenir", 18)
-    calories:setFillColor(0,0,0)
-    calories.x = 160
-    calories.y = 200
-    sceneGroup:insert(calories)
+    local grilledcheese = display.newText("Grilled Cheese", 160, 240, "Avenir", 18)
+    grilledcheese:setFillColor(0,0,0)
+    grilledcheese.x = 160
+    grilledcheese.y = 190
+    sceneGroup:insert(grilledcheese)
 
-    local calories_ex = display.newText("Miso Soup", 160, 240, "Avenir", 18)
-    calories_ex:setFillColor(0,0,0)
-    calories_ex.x = 160
-    calories_ex.y = 240
-    sceneGroup:insert(calories_ex)
+    local miso = display.newText("Miso Soup", 160, 240, "Avenir", 18)
+    miso:setFillColor(0,0,0)
+    miso.x = 160
+    miso.y = 230
+    sceneGroup:insert(miso)
 
 
      
@@ -141,6 +141,55 @@ function scene:create( event )
         options      = dropdownOptions
       }
       sceneGroup:insert(myDropdown)
+
+    local function scrollListener( event )
+     
+        local phase = event.phas
+        return true
+    end
+     local scrollBarOpt = {
+        width = 20,
+        height = 20,
+        numFrames = 3,
+        sheetContentWidth = 20,
+        sheetContentHeight = 60
+    }
+    -- Create the widget
+    local scrollView = widget.newScrollView(
+        {
+            y = 238,
+            x = 160,
+            width = 500,
+            height = 300,
+            scrollWidth = 250,
+            scrollHeight = 300,
+            listener = scrollListener,
+            hideBackground = true,
+            horizontalScrollDisabled = true,
+        }
+    )
+
+    scrollView:scrollToPosition {
+      x = 100
+    }
+     
+    -- Create a image and insert it into the scroll view
+    local background = display.newImageRect( "assets/scroll_button.png", 30, 30 )
+    background.y = 300
+    background.x = 160
+    scrollView:insert( background )
+
+    sceneGroup:insert(scrollView)
+     
+    scrollView:insert(grilledcheese)
+    scrollView:insert(eggstoast)
+    scrollView:insert(tomato)
+    scrollView:insert(chickensoup)
+    scrollView:insert(miso)
+    sceneGroup:insert(scrollView)
+
+
+
 
     end
 
