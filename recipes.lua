@@ -14,7 +14,7 @@ local scene = composer.newScene()
 
 
 local function changeScenes()
-    composer.gotoScene("display_recipes", {effect="slideLeft", time=500})
+    composer.gotoScene("display_recipes")
 end
 
 local function delayedSceneRemoval()
@@ -160,6 +160,7 @@ slider.x = 160
     ---scrollView:insert( slider )
     sceneGroup:insert(scrollView)
     sceneGroup:insert(scrollView)
+    sceneGroup:insert(slider)
 
     --- DROPDOWN MENU
       local myDropdown_cuisine
