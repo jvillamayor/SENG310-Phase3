@@ -234,13 +234,14 @@ function scene:create( event )
         }, {
             title     = 'Help and Support',
             action    = function() 
-                            native.showAlert('Dropdown', 'Dropdown', {'Ok'})
+                            delayedSceneRemoval()
+                            composer.gotoScene("help_support")
                         end 
         }, {
             title     = 'Log Out',
             action    = function() 
                             delayedSceneRemoval()
-                            composer.gotoScene("logout.lua")
+                            composer.gotoScene("login")
                         end 
         }
     }
