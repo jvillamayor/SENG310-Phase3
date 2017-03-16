@@ -8,6 +8,7 @@
 local composer = require("composer")
 local widget = require("widget")
 local dropdown = require('dropdown')
+local dropdown2 = require('dropdown_cuisine')
 local screen = require('screen')
 local scene = composer.newScene()
 
@@ -35,50 +36,158 @@ function scene:create( event )
     search.x = 160
 
 
-    local az = widget.newButton(
+    local myDropdown_az
+      local dropdown_azOpts = {
+        {
+          title = 'Alphabetical A-Z',
+          action = function()
+          end
+        },
+        {
+          title = 'Alphabetical Z-A',
+          action = function()
+          end
+        },
+        {
+          title = 'Popularity',
+          action = function()
+          end
+        },
+        {
+          title = 'User Rating',
+          action = function()
+          end
+        }
+      }
+
+      local button_az = widget.newButton{
+        width       = 50,
+        height      = 50,
+        defaultFile = 'assets/az.png',
+        overFile    = 'assets/az.png',
+        onEvent     = function( event )
+          local target = event.target
+          local phase  = event.phase
+          if phase == 'began' then
+            target.alpha = .5
+          else
+            target.alpha = 1
+          if phase ==  'ended' then
+              myDropdown_az:toggle()
+          end
+        end
+      end
+      }
+      button_az.alpha = 10
+      button_az.x = 280
+      button_az.y = 45
+      sceneGroup:insert(button_az)
+
+      myDropdown_az     = dropdown2.new{
+        x            = 280,
+        y            = 40,
+        toggleButton = button_az,
+        width        = 160,
+        marginTop    = 12,
+        padding      = 10,
+        options      = dropdown_azOpts
+      }
+      sceneGroup:insert(myDropdown_az)
+
+
+    local function handleBack( event )
+      composer.gotoScene("recipes")
+    end
+
+    local function handleSoup (event)
+      composer.gotoScene("favourites") 
+    end
+
+     local back = widget.newButton(
     {
-        width = 60,
+        width = 50,
         height = 50,
         left = 120,
         right = 200,
-        defaultFile = 'assets/az.png',
-        overFile = 'assets/az.png'
-     
+        defaultFile = 'assets/backbutton.png',
+        overFile = 'assets/backbutton.png',
+        onEvent = handleBack
     }
     )
-    az.y = 45
-    az.x = 280
-
-    local chickensoup = display.newText("Easy Thai Soup", 160, 240, "Avenir", 18)
-    chickensoup:setFillColor(0,0,0)
-    chickensoup.x = 160
-    chickensoup.y = 70
-    -- sceneGroup:insert(chickensoup)
-
-    local tomato = display.newText("Tomato Soup", 160, 240, "Avenir", 18)
-    tomato:setFillColor(0,0,0)
-    tomato.x = 160
-    tomato.y = 110
-    -- sceneGroup:insert(tomato)
-
-    local eggstoast = display.newText("Eggs and Toast", 160, 240, "Avenir", 18)
-    eggstoast:setFillColor(0,0,0)
-    eggstoast.x = 160
-    eggstoast.y = 150
-    -- sceneGroup:insert(eggstoast)
+    back.y = 480
+    back.x = 40
 
 
-    local grilledcheese = display.newText("Grilled Cheese", 160, 240, "Avenir", 18)
-    grilledcheese:setFillColor(0,0,0)
-    grilledcheese.x = 160
-    grilledcheese.y = 190
-    -- sceneGroup:insert(grilledcheese)
+    local thaisoup_pic = display.newImage("assets/thaisoupcircle.png")
+    thaisoup_pic.x = 35
+    thaisoup_pic.y = 70
+    thaisoup_pic:scale(0.25,0.25)
 
-    local miso = display.newText("Miso Soup", 160, 240, "Avenir", 18)
+    local soup = widget.newButton( {
+        left = 142,
+        right = 200,
+        id = "soup",
+        font = "Avenir",
+        fontSize = 18,
+        label = "Easy Thai Soup",
+        onEvent = handleSoup,
+        width =200,
+        height = 40
+            
+    } )
+    soup.x = 142
+    soup.y = 70
+    sceneGroup:insert(soup)
+    
+
+
+    local Terriyaki_pic = display.newImage("assets/terriyaki.png")
+    Terriyaki_pic.x = 35
+    Terriyaki_pic.y = 140
+    Terriyaki_pic:scale(0.25,0.25)
+    local Terriyaki = display.newText("Chicken Terriyaki Bowl", 160, 240, "Avenir",18)
+    Terriyaki:setFillColor(0,0,0)
+    Terriyaki.x = 169
+    Terriyaki.y = 140
+
+
+    local friedrice_pic = display.newImage("assets/friedrice.png")
+    friedrice_pic.x = 35
+    friedrice_pic.y = 210
+    friedrice_pic:scale(0.25,0.25)
+    local friedrice = display.newText("Chicken Fried Rice", 160, 240, "Avenir",18)
+    friedrice:setFillColor(0,0,0)
+    friedrice.x = 154
+    friedrice.y = 210
+
+
+    local beef_pic = display.newImage("assets/beef.png")
+    beef_pic.x = 37
+    beef_pic.y = 280
+    beef_pic:scale(0.25,0.25)
+    local beef = display.newText("Beef Bulgogi", 160, 240, "Avenir",18)
+    beef:setFillColor(0,0,0)
+    beef.x = 132
+    beef.y = 280
+
+
+    local miso_pic = display.newImage("assets/miso.png")
+    miso_pic.x = 35
+    miso_pic.y = 350
+    miso_pic:scale(0.25,0.25)
+    local miso = display.newText("Miso Soup", 160, 240, "Avenir",18)
     miso:setFillColor(0,0,0)
-    miso.x = 160
-    miso.y = 230
-    -- sceneGroup:insert(miso)
+    miso.x = 123
+    miso.y = 350
+
+    local tuna_pic = display.newImage("assets/tuna.png")
+    tuna_pic.x = 35
+    tuna_pic.y = 420
+    tuna_pic:scale(0.25,0.25)
+    local tuna = display.newText("Sesame Seared Ahi Tuna", 160, 240, "Avenir",17.5)
+    tuna:setFillColor(0,0,0)
+    tuna.x = 176
+    tuna.y = 420
 
 
      
@@ -169,13 +278,6 @@ function scene:create( event )
         local phase = event.phase
         return true
     end
-     local scrollBarOpt = {
-        width = 20,
-        height = 20,
-        numFrames = 3,
-        sheetContentWidth = 20,
-        sheetContentHeight = 60
-    }
     -- Create the widget
     local scrollView = widget.newScrollView(
         {
@@ -184,7 +286,7 @@ function scene:create( event )
             width = 500,
             height = 400,  
             scrollWidth = 500,
-            scrollHeight = 400,
+            scrollHeight = 100,
             hideBackground = false,
             listener = scrollListener,
             horizontalScrollDisabled = true,
@@ -196,16 +298,18 @@ function scene:create( event )
     }
      
     -- Create a image and insert it into the scroll view
-    local background = display.newImageRect( "assets/scroll_button.png", 30, 30 )
-    background.y = 300
-    background.x = 160
-    scrollView:insert( background )
-    scrollView:insert(grilledcheese)
-    scrollView:insert(eggstoast)
-    scrollView:insert(tomato)
-    scrollView:insert(chickensoup)
+    scrollView:insert(beef)
+    scrollView:insert(beef_pic)
+    scrollView:insert(friedrice)
+    scrollView:insert(friedrice_pic)
+    scrollView:insert(Terriyaki)
+    scrollView:insert(Terriyaki_pic)
+    scrollView:insert(soup)
+    scrollView:insert(thaisoup_pic)
     scrollView:insert(miso)
-
+    scrollView:insert(miso_pic)
+    scrollView:insert(tuna)
+    scrollView:insert(tuna_pic)
     sceneGroup:insert(scrollView)
      
 
@@ -213,18 +317,19 @@ function scene:create( event )
         if (navReveal == true) then
             scrollView.isVisible = false
             search.isVisible = false
-            background.isVisible = false
+            back.isVisible = false
             navReveal = false
         else
             scrollView.isVisible = true
             search.isVisible = true
-            background.isVisible = true
+            back.isVisible = true
             navReveal = true
         end
     end
 
     navReveal = true
     button:addEventListener("tap", reveal)
+    button_az:addEventListener("tap", reveal)
 
 
     end

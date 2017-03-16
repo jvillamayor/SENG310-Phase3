@@ -112,8 +112,8 @@ function Dropdown_cuisine.new( o )
   overlay:addEventListener( 'touch', overlay )
   overlay.isVisible = false
   
-  button_cuisine.x = 250
-  button_cuisine.y = 120
+---  button_cuisine.x = 250
+---  button_cuisine.y = 120
   group:insert( button_cuisine )
   if not height then
     height = 44 * #options + padding

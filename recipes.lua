@@ -103,9 +103,9 @@ function scene:create( event )
         height = 40
     }
         )
-
     update.y = 450
     update.x = 230
+    sceneGroup:insert(update)
 
 
     local function scrollListener( event )
@@ -211,6 +211,8 @@ slider.x = 160
       end
       }
       button_cuisine.alpha = 10
+      button_cuisine.x = 250
+      button_cuisine.y = 120
       sceneGroup:insert(button_cuisine)
 
       myDropdown_cuisine     = dropdown_cuisine.new{
@@ -303,9 +305,6 @@ slider.x = 160
         options      = dropdownOptions
       }
       sceneGroup:insert(myDropdown)
-
-
-    sceneGroup:insert(update)
     update:addEventListener("tap", changeScenes)
 
 
@@ -314,10 +313,12 @@ slider.x = 160
         if (navReveal == true) then
             scrollView.isVisible = false
             slider.isVisible = false
+            update.isVisible = false
             navReveal = false
         else
             scrollView.isVisible = true
             slider.isVisible = true
+            update.isVisible = true
             navReveal = true
         end
     end
