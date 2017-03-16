@@ -315,14 +315,12 @@ end
         {
             title     = 'User Profile',
             action    = function() 
-                            delayedSceneRemoval()
                             composer.gotoScene("profile")
                         end 
         },
         {
             title     = 'Recipes',
             action    = function()
-                            delayedSceneRemoval() 
                             composer.gotoScene("recipes")
                         end 
         },
@@ -335,7 +333,6 @@ end
         {
             title     = 'Health Tracker',
             action    = function() 
-                            delayedSceneRemoval()
                             composer.gotoScene("health_tracker")
                         end 
         },
@@ -352,7 +349,6 @@ end
         {
             title     = 'Log Out',
             action    = function() 
-                            delayedSceneRemoval()
                             composer.gotoScene("logout.lua")
                         end 
         }
