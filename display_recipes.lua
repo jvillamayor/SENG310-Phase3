@@ -32,7 +32,22 @@ function scene:create( event )
     search.inputType = "search"
     search.placeholder = "Search Ingredients"
     search.y = 50
-    search.x = 210
+    search.x = 160
+
+
+    local az = widget.newButton(
+    {
+        width = 60,
+        height = 50,
+        left = 120,
+        right = 200,
+        defaultFile = 'assets/az.png',
+        overFile = 'assets/az.png'
+     
+    }
+    )
+    az.y = 45
+    az.x = 280
 
     local chickensoup = display.newText("Easy Thai Soup", 160, 240, "Avenir", 18)
     chickensoup:setFillColor(0,0,0)
