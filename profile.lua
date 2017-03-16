@@ -240,7 +240,8 @@ function scene:create( event )
         }, {
             title     = 'Log Out',
             action    = function() 
-                            native.showAlert('Dropdown', 'Dropdown', {'Ok'})
+                            delayedSceneRemoval()
+                            composer.gotoScene("logout.lua")
                         end 
         }
     }
