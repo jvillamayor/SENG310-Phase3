@@ -25,38 +25,38 @@ function scene:create( event )
     local myTextObject = display.newText("Recipes", 160, 240, "Avenir", 20)
     myTextObject:setFillColor(0,0,0)
     myTextObject.y = 5
-    sceneGroup:insert(myTextObject)
+    -- sceneGroup:insert(myTextObject)
 
     local chickensoup = display.newText("Chicken Soup", 160, 240, "Avenir", 18)
     chickensoup:setFillColor(0,0,0)
     chickensoup.x = 160
     chickensoup.y = 70
-    sceneGroup:insert(chickensoup)
+    -- sceneGroup:insert(chickensoup)
 
     local tomato = display.newText("Tomato Soup", 160, 240, "Avenir", 18)
     tomato:setFillColor(0,0,0)
     tomato.x = 160
     tomato.y = 110
-    sceneGroup:insert(tomato)
+    -- sceneGroup:insert(tomato)
 
     local eggstoast = display.newText("Eggs and Toast", 160, 240, "Avenir", 18)
     eggstoast:setFillColor(0,0,0)
     eggstoast.x = 160
     eggstoast.y = 150
-    sceneGroup:insert(eggstoast)
+    -- sceneGroup:insert(eggstoast)
 
 
     local grilledcheese = display.newText("Grilled Cheese", 160, 240, "Avenir", 18)
     grilledcheese:setFillColor(0,0,0)
     grilledcheese.x = 160
     grilledcheese.y = 190
-    sceneGroup:insert(grilledcheese)
+    -- sceneGroup:insert(grilledcheese)
 
     local miso = display.newText("Miso Soup", 160, 240, "Avenir", 18)
     miso:setFillColor(0,0,0)
     miso.x = 160
     miso.y = 230
-    sceneGroup:insert(miso)
+    -- sceneGroup:insert(miso)
 
 
      

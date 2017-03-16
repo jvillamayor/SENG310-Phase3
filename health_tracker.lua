@@ -11,7 +11,7 @@ local dropdown = require('dropdown')
 local screen = require('screen')
 local scene = composer.newScene()
 
-print("In Scene: profile.lua")
+print("In Scene: health_tracker.lua")
 
 --Function to delay the removal of the scene, smoothing out the transition between scenes
 local function delayedSceneRemoval()
@@ -29,66 +29,109 @@ function scene:create( event )
         print( "Switch with ID '"..switch.id.."' is on: "..tostring(switch.isOn) )
     end
      
-    local myTextObject = display.newText("Health Tracker", 160, 240, "Avenir", 20)
-    myTextObject:setFillColor(0,0,0)
-    myTextObject.y = 5
-    sceneGroup:insert(myTextObject)
+    local title_text = display.newText("Health Tracker", 160, 240, "Avenir", 20)
+    title_text:setFillColor(0,0,0)
+    title_text.y = 5
+    sceneGroup:insert(title_text)
 
     local myDropdown
 
-    local xAxis = display.newLine( 20, 50, 20, 225 )
-    xAxis:append( 305,225)
-    xAxis:setStrokeColor( 0, 0, 0, 1 )
-    xAxis.strokeWidth = 3
-    sceneGroup:insert(xAxis)
+    local xy_axis = display.newLine( 20, 50, 20, 225 )
+    xy_axis:append( 305,225)
+    xy_axis:setStrokeColor( 0, 0, 0, 1 )
+    xy_axis.strokeWidth = 3
+    sceneGroup:insert(xy_axis)
+
+    local summary_header = display.newText("Summary", 60, 260, "Avenir", 18)
+    summary_header:setFillColor(0,0,0)
+    sceneGroup:insert(summary_header)
+
+
+-- Scroll functionality
+    local function scrollListener( event ) 
+        local phase = event.phase
+        return true
+    end
+
+    local scrollBarOpt = {
+        width = 20,
+        height = 20,
+        numFrames = 3,
+        sheetContentWidth = 20,
+        sheetContentHeight = 60
+    }
+    -- Create the widget
+    local scrollView = widget.newScrollView(
+    {
+        top = 15,
+        left = -100,
+        width = 1000,
+        height = 1000,
+        scrollWidth = 1000,
+        scrollHeight = 800,
+        listener = scrollListener,
+        horizontalScrollDisabled = true
+    }
+    )
+
+    scrollView:scrollToPosition {
+      x = 100
+    }
+     
+    -- Create a image and insert it into the scroll view
+    local background = display.newImageRect( "assets/scroll_button.png", 30, 30 )
+    background.y = 300
+    background.x = 160
+    scrollView:insert( background )
+
+        --scrollView:insert(title_text)
+        scrollView:insert(xy_axis)
+        scrollView:insert(summary_header)
+
+        sceneGroup:insert(scrollView)
+
+
 
     local dropdownOptions = {
-    {
-    title     = 'User Profile',
-    action    = function() 
-      delayedSceneRemoval()
-      composer.gotoScene("profile")
-    end 
-    },
-    {
-      title     = 'Recipes',
-      action    = function()
-                    delayedSceneRemoval()
-                    composer.gotoScene("recipes")
-      end 
-    },
-    {
-      title     = 'Saved Recipes',
-      action    = function() 
-        native.showAlert('Dropdown', 'Dropdown', {'Ok'})
-      end 
-    },
-    {
-      title     = '7 Day Planner',
-      action    = function() 
-        native.showAlert('Dropdown', 'Dropdown', {'Ok'})
-      end 
-    },
-    {
-      title     = 'Group Meal Planner',
-      action    = function() 
-        native.showAlert('Dropdown', 'Dropdown', {'Ok'})
-      end 
-    },
-    {
-      title     = 'Help and Support',
-      action    = function() 
-        native.showAlert('Dropdown', 'Dropdown', {'Ok'})
-      end 
-    },
-    {
-      title     = 'Log Out',
-      action    = function() 
-        native.showAlert('Dropdown', 'Dropdown', {'Ok'})
-      end 
+        {
+        title     = 'User Profile',
+        action    = function() 
+          delayedSceneRemoval()
+          composer.gotoScene("profile")
+        end 
+        }, {
+          title     = 'Recipes',
+          action    = function()
+                        delayedSceneRemoval()
+                        composer.gotoScene("recipes")
+          end 
+        }, {
+          title     = 'Saved Recipes',
+          action    = function() 
+            native.showAlert('Dropdown', 'Dropdown', {'Ok'})
+          end 
+        }, {
+          title     = '7 Day Planner',
+          action    = function() 
+            native.showAlert('Dropdown', 'Dropdown', {'Ok'})
+          end 
+        }, {
+          title     = 'Group Meal Planner',
+          action    = function() 
+            native.showAlert('Dropdown', 'Dropdown', {'Ok'})
+          end 
+        }, {
+          title     = 'Help and Support',
+          action    = function() 
+            native.showAlert('Dropdown', 'Dropdown', {'Ok'})
+          end 
+        }, {
+          title     = 'Log Out',
+          action    = function() 
+            native.showAlert('Dropdown', 'Dropdown', {'Ok'})
+          end 
+        }
     }
-
-  }
 
   local button = widget.newButton{
     width       = 30,
@@ -121,6 +164,7 @@ function scene:create( event )
     options      = dropdownOptions
   }
 sceneGroup:insert(myDropdown)
+
 
 local function reveal()
         if (navReveal == true) then
