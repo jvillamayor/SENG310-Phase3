@@ -206,6 +206,7 @@ myDropdown     = dropdown.new{
   options      = dropdownOptions
 }
 
+sceneGroup:insert(myDropdown)
 end
 
 
