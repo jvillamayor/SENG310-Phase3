@@ -30,12 +30,12 @@ function scene:create( event )
     myTextObject.y = 45
     sceneGroup:insert(myTextObject)
 
-    local username = native.newTextField(150, 350, 220, 36)
+    local username = native.newTextField(150, 340, 220, 30)
     sceneGroup:insert(username)
 
     username.inputType = "username"
     username.placeholder = "username"
-    local password = native.newTextField(150, 395, 220, 36)
+    local password = native.newTextField(150, 380, 220, 30)
     password.inputType = "password"
     password.placeholder = "password"
 
@@ -53,7 +53,7 @@ function scene:create( event )
             
     } )
 
-    signin.y = 435
+    signin.y = 420
     signin.x = 160
 
     local create = widget.newButton( {
@@ -68,7 +68,7 @@ function scene:create( event )
             
     } )
 
-    create.y = 465
+    create.y = 460
     create.x = 160
     
     local forgot = widget.newButton( {
@@ -83,7 +83,7 @@ function scene:create( event )
             
     } )
 
-    forgot.y = 495
+    forgot.y = 485
     forgot.x = 160
 
     sceneGroup:insert(signin)

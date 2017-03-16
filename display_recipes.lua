@@ -27,7 +27,14 @@ function scene:create( event )
     myTextObject.y = 5
     -- sceneGroup:insert(myTextObject)
 
-    local chickensoup = display.newText("Chicken Soup", 160, 240, "Avenir", 18)
+    local search = native.newTextField(160, 350, 220, 20)
+    sceneGroup:insert(search)
+    search.inputType = "search"
+    search.placeholder = "Search Ingredients"
+    search.y = 50
+    search.x = 210
+
+    local chickensoup = display.newText("Easy Thai Soup", 160, 240, "Avenir", 18)
     chickensoup:setFillColor(0,0,0)
     chickensoup.x = 160
     chickensoup.y = 70
@@ -157,12 +164,12 @@ function scene:create( event )
     -- Create the widget
     local scrollView = widget.newScrollView(
         {
-            y = 238,
+            y = 270,
             x = 160,
             width = 500,
-            height = 300,  
+            height = 400,  
             scrollWidth = 500,
-            scrollHeight = 300,
+            scrollHeight = 400,
             hideBackground = false,
             listener = scrollListener,
             horizontalScrollDisabled = true,
@@ -178,24 +185,24 @@ function scene:create( event )
     background.y = 300
     background.x = 160
     scrollView:insert( background )
-
-    sceneGroup:insert(scrollView)
-     
     scrollView:insert(grilledcheese)
     scrollView:insert(eggstoast)
     scrollView:insert(tomato)
     scrollView:insert(chickensoup)
     scrollView:insert(miso)
-    sceneGroup:insert(scrollView)
 
+    sceneGroup:insert(scrollView)
+     
 
     local function reveal()
         if (navReveal == true) then
             scrollView.isVisible = false
+            search.isVisible = false
             background.isVisible = false
             navReveal = false
         else
             scrollView.isVisible = true
+            search.isVisible = true
             background.isVisible = true
             navReveal = true
         end

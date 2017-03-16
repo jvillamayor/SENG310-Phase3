@@ -8,6 +8,7 @@
 local composer = require("composer")
 local widget = require("widget")
 local dropdown = require('dropdown')
+local dropdown_cuisine = require('dropdown_cuisine')
 local screen = require('screen')
 local scene = composer.newScene()
 
@@ -70,7 +71,7 @@ function scene:create( event )
     sceneGroup:insert(budget)
 
 
-    local budget_ex = display.newText("<= $50", 160, 240, "Avenir", 15)
+    local budget_ex = display.newText("$50", 160, 240, "Avenir", 15)
     budget_ex:setFillColor(0,0,0)
     budget_ex.x = 200
     budget_ex.y = 280
@@ -90,13 +91,6 @@ function scene:create( event )
     sceneGroup:insert(time_ex)
 
 
----    local update = display.newText("Search Recipes", 160, 240, "Avenir", 18)
---- update:setFillColor(0,0,0)
----    update.x = 230
- ---   update.y = 450
-    ----sceneGroup:insert(update)
- 
-
     local update = widget.newButton(
     {
         left = 120,
@@ -107,8 +101,6 @@ function scene:create( event )
         width = 200,
         font = "Avenir",
         height = 40
-     ---   fillColor = { default = {165,198,209,0}, over= {165,198,209,0} },
-      ---  strokeWidth = 4
     }
         )
 
@@ -116,47 +108,121 @@ function scene:create( event )
     update.x = 230
 
 
-
--- ScrollView listener
     local function scrollListener( event )
      
-        local phase = event.phas
+        local phase = event.phase
         return true
     end
-     local scrollBarOpt = {
-        width = 20,
-        height = 20,
-        numFrames = 3,
-        sheetContentWidth = 20,
-        sheetContentHeight = 60
-    }
-    -- Create the widget
+
     local scrollView = widget.newScrollView(
         {
             y = 238,
             x = 170,
-            width = 230,
-            height = 25,
-            scrollWidth = 250,
-            scrollHeight = 25,
-            listener = scrollListener,
+            width = 500,
+            height = 50,
+            scrollWidth = 500,
+            scrollHeight = 500,
             hideBackground = true,
-            verticalScrollDisabled = true,
+            listener = scrollListener,
+            verticalScrollDisabled = true
         }
     )
 
-    scrollView:scrollToPosition {
-      x = 100
+    local options = {
+    frames = {
+        { x=0, y=0, width=36, height=64 },
+        { x=40, y=0, width=36, height=64 },
+        { x=80, y=0, width=36, height=64 },
+        { x=124, y=0, width=36, height=64 },
+        { x=168, y=0, width=64, height=64 }
+    },
+    sheetContentWidth = 200,
+    sheetContentHeight = 300
+}
+local sliderSheet = graphics.newImageSheet( "scroll_button.png", options )
+ 
+-- Create the widget
+local slider = widget.newSlider(
+    {
+        sheet = sliderSheet,
+        top = 200,
+        left= 50,
+        width = 270,
+        listener = sliderListener
     }
-     
-    -- Create a image and insert it into the scroll view
-    local background = display.newImageRect( "assets/scroll_button.png", 30, 30 )
-    background.y = 10
-    background.x = 8
-    scrollView:insert( background )
+)
+slider.y = 235
+slider.x = 160
 
+ --   local background = display.newImageRect( "assets/scroll_button.png", 30, 30 )
+  ---  background.y = 25
+   --- background.x = 160
+    ---scrollView:insert( slider )
     sceneGroup:insert(scrollView)
+    sceneGroup:insert(scrollView)
+
     --- DROPDOWN MENU
+      local myDropdown_cuisine
+      local dropdown_cuisineOpts = {
+        {
+          title = 'Asian',
+          action = function()
+          end
+        },
+        {
+          title = 'Indian',
+          action = function()
+          end
+        },
+        {
+          title = 'Italian',
+          action = function()
+          end
+        },
+        {
+          title = 'Mexican',
+          action = function()
+          end
+        },
+        {
+          title = 'Southern',
+          action = function()
+          end
+        }
+      }
+
+      local button_cuisine = widget.newButton{
+        width       = 30,
+        height      = 30,
+        defaultFile = 'assets/down.png',
+        overFile    = 'assets/down.png',
+        onEvent     = function( event )
+          local target = event.target
+          local phase  = event.phase
+          if phase == 'began' then
+            target.alpha = .5
+          else
+            target.alpha = 1
+          if phase ==  'ended' then
+              myDropdown_cuisine:toggle()
+          end
+        end
+      end
+      }
+      button_cuisine.alpha = 10
+      sceneGroup:insert(button_cuisine)
+
+      myDropdown_cuisine     = dropdown_cuisine.new{
+        x            = 300,
+        y            = 120,
+        toggleButton = button_cuisine,
+        width        = 160,
+        marginTop    = 12,
+        padding      = 20,
+        options      = dropdown_cuisineOpts
+      }
+      sceneGroup:insert(myDropdown_cuisine)
+
       local myDropdown
 
       local dropdownOptions = {
@@ -240,6 +306,28 @@ function scene:create( event )
 
     sceneGroup:insert(update)
     update:addEventListener("tap", changeScenes)
+
+
+
+    local function reveal()
+        if (navReveal == true) then
+            scrollView.isVisible = false
+            slider.isVisible = false
+            navReveal = false
+        else
+            scrollView.isVisible = true
+            slider.isVisible = true
+            navReveal = true
+        end
+    end
+
+    navReveal = true
+    button:addEventListener("tap", reveal)
+    button_cuisine:addEventListener("tap", reveal)
+
+
+
+
     end
 
 -- show()
