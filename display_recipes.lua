@@ -26,15 +26,14 @@ function scene:create( event )
     local myTextObject = display.newText("Recipes", 160, 240, "Avenir", 20)
     myTextObject:setFillColor(0,0,0)
     myTextObject.y = 5
-    -- sceneGroup:insert(myTextObject)
+    sceneGroup:insert(myTextObject)
 
     local search = native.newTextField(160, 350, 220, 20)
-    sceneGroup:insert(search)
     search.inputType = "search"
     search.placeholder = "Search Ingredients"
     search.y = 50
     search.x = 160
-
+    sceneGroup:insert(search)
 
     local myDropdown_az
       local dropdown_azOpts = {

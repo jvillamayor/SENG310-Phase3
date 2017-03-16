@@ -1,5 +1,6 @@
 local composer = require( "composer" )
 local dropdown = require("dropdown")
+local dropdown2 = require("dropdown_cuisine")
 local scene = composer.newScene()
 local screen = require("screen")
 local widget = require("widget")
@@ -123,11 +124,125 @@ function scene:create( event )
     bg:setFillColor(1, 1, 1)
     sceneGroup:insert(bg)
 
-    local search = native.newTextField(200, 0, 220, 30)
+    local search = native.newTextField(200, 0, 180, 20)
     sceneGroup:insert(search)
     search.inputType = "default"
     search.placeholder = "Search..."
-    search.y = 10
+    search.y = 50
+    search.x = 160
+
+
+    local myDropdown_az
+      local dropdown_azOpts = {
+        {
+          title = 'Alphabetical A-Z',
+          action = function()
+          end
+        },
+        {
+          title = 'Alphabetical Z-A',
+          action = function()
+          end
+        },
+        {
+          title = 'Popularity',
+          action = function()
+          end
+        },
+        {
+          title = 'User Rating',
+          action = function()
+          end
+        }
+      }
+
+      local button_az = widget.newButton{
+        width       = 50,
+        height      = 50,
+        defaultFile = 'assets/az.png',
+        overFile    = 'assets/az.png',
+        onEvent     = function( event )
+          local target = event.target
+          local phase  = event.phase
+          if phase == 'began' then
+            target.alpha = .5
+          else
+            target.alpha = 1
+          if phase ==  'ended' then
+              myDropdown_az:toggle()
+          end
+        end
+      end
+      }
+      button_az.alpha = 10
+      button_az.x = 260
+      button_az.y = 45
+      sceneGroup:insert(button_az)
+
+      myDropdown_az     = dropdown2.new{
+        x            = 280,
+        y            = 40,
+        toggleButton = button_az,
+        width        = 160,
+        marginTop    = 12,
+        padding      = 10,
+        options      = dropdown_azOpts
+      }
+      sceneGroup:insert(myDropdown_az)
+
+
+    local myDropdown_order
+      local dropdown_orderOpts = {
+        {
+          title = 'Most Commonly Selected',
+          action = function()
+          end
+        },
+        {
+          title = 'Least Commonly Selected',
+          action = function()
+          end
+        }
+      }
+
+      local button_order = widget.newButton{
+        width       = 50,
+        height      = 50,
+        defaultFile = 'assets/order.png',
+        overFile    = 'assets/order.png',
+        onEvent     = function( event )
+          local target = event.target
+          local phase  = event.phase
+          if phase == 'began' then
+            target.alpha = .5
+          else
+            target.alpha = 1
+          if phase ==  'ended' then
+              myDropdown_order:toggle()
+          end
+        end
+      end
+      }
+      button_order.alpha = 10
+      button_order.x = 290
+      button_order.y = 45
+      sceneGroup:insert(button_order)
+
+      myDropdown_order     = dropdown2.new{
+        x            = 300,
+        y            = 40,
+        toggleButton = button_order,
+        width        = 160,
+        marginTop    = 12,
+        padding      = 10,
+        options      = dropdown_orderOpts
+      }
+      sceneGroup:insert(myDropdown_order)
+
+
+      
+
+
 
 
     -- local navBar = display.newRect( 52, 250, 450, 590 )
@@ -138,13 +253,13 @@ function scene:create( event )
     -- navBar.isVisible = false
 
 
-    local banner = display.newImage("assets/favourites_banner.jpg")
-    banner.x = 80 
-    banner.y = 0
-    banner.alpha = 0.5
-    banner:scale(.7, .4)
+    -- local banner = display.newImage("assets/favourites_banner.jpg")
+    -- banner.x = 80 
+    -- banner.y = 0
+    -- banner.alpha = 0.5
+    -- banner:scale(.7, .4)
 
-    sceneGroup:insert(banner)
+    -- sceneGroup:insert(banner)
 
     -- local menuBarBackdrop = display.newRect( 69, 0, 40, 36 )
     -- menuBarBackdrop.strokeWidth = 0
@@ -163,19 +278,24 @@ function scene:create( event )
     
     -- sceneGroup:insert(menu_icon)
 
-    local myTextObject = display.newText("Favourites", 102, 242, "Arial", 40)
-    myTextObject:setFillColor(1, 1, 1)
-    myTextObject.y = 40
+    -- local myTextObject = display.newText("Favourites", 102, 242, "Arial", 40)
+    -- myTextObject:setFillColor(1, 1, 1)
+    -- myTextObject.y = 40
 
-    sceneGroup:insert(myTextObject)
+    -- sceneGroup:insert(myTextObject)
 
-    local myTextObject = display.newText("Favourites", 100, 240, "Arial", 40)
+    -- local myTextObject = display.newText("Favourites", 100, 240, "Arial", 40)
+    -- myTextObject:setFillColor(0,0,0)
+    -- myTextObject.y = 40
+
+    -- sceneGroup:insert(myTextObject)
+
+    local myTextObject = display.newText("Saved Recipes", 160, 240, "Avenir", 20)
     myTextObject:setFillColor(0,0,0)
-    myTextObject.y = 40
-
+    myTextObject.y = 5
     sceneGroup:insert(myTextObject)
 
-    local tile = display.newRect( 75, 180, 150, 200 )
+    local tile = display.newRect( 80, 180, 150, 200 )
     tile.strokeWidth = 0
     tile:setFillColor( 156/255, 168/255, 188/255 )
     tile:setStrokeColor( 0, 0, 0 )
@@ -186,18 +306,18 @@ function scene:create( event )
     tile2:setStrokeColor( 0, 0, 0 )
 
     local maccheese = display.newImage("assets/mac&cheese.jpg")
-    maccheese.x = 75 
+    maccheese.x = 80 
     maccheese.y = 148
     maccheese:scale(.188, .3)
 
     local thaiSoup = display.newImage("assets/thaiSoup.jpg")
     thaiSoup.x = 240 
-    thaiSoup.y = 150
+    thaiSoup.y = 148
     thaiSoup:scale(.235, .28)
 
     local maccheese_text = display.newText("Mac & Cheese", 102, 242, "Arial", 20)
     maccheese_text:setFillColor(0, 0, 0)
-    maccheese_text.x = 75
+    maccheese_text.x = 80
     maccheese_text.y = 250
 
     local thaiSoup_text = display.newText("Thai Soup", 102, 242, "Arial", 20)
@@ -414,6 +534,8 @@ end
 
     navReveal = true
     button:addEventListener("tap", reveal)
+    button_az:addEventListener("tap", reveal)
+    button_order:addEventListener("tap", reveal)
 
 
 end
