@@ -14,7 +14,6 @@ local widget = require("widget")
 local function changeScenes()
     composer.gotoScene("blank_menu", {effect="slideLeft", time=500})
 end
- 
 -- create()
 function scene:create( event )
     local sceneGroup = self.view

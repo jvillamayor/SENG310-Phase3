@@ -1,7 +1,7 @@
 local composer = require( "composer" )
- 
+local dropdown = require("dropdown")
 local scene = composer.newScene()
- 
+local screen = require("screen")
 local widget = require("widget")
 -- -----------------------------------------------------------------------------------
 -- Code outside of the scene event functions below will only be executed ONCE unless
@@ -123,18 +123,19 @@ function scene:create( event )
     bg:setFillColor(1, 1, 1)
     sceneGroup:insert(bg)
 
-    local search = native.newTextField(200, 0, 220, 36)
+    local search = native.newTextField(200, 0, 220, 30)
     sceneGroup:insert(search)
     search.inputType = "default"
     search.placeholder = "Search..."
+    search.y = 10
 
 
-    local navBar = display.newRect( 52, 250, 450, 590 )
-    navBar.strokeWidth = 3
-    navBar:setFillColor( 1 )
-    navBar:setStrokeColor( 0, 0, 0 )
-    -- Originally this is not visible
-    navBar.isVisible = false
+    -- local navBar = display.newRect( 52, 250, 450, 590 )
+    -- navBar.strokeWidth = 3
+    -- navBar:setFillColor( 1 )
+    -- navBar:setStrokeColor( 0, 0, 0 )
+    -- -- Originally this is not visible
+    -- navBar.isVisible = false
 
 
     local banner = display.newImage("assets/favourites_banner.jpg")
@@ -145,22 +146,22 @@ function scene:create( event )
 
     sceneGroup:insert(banner)
 
-    local menuBarBackdrop = display.newRect( 69, 0, 40, 36 )
-    menuBarBackdrop.strokeWidth = 0
-    menuBarBackdrop:setFillColor( 1 )
-    menuBarBackdrop:setStrokeColor( 0, 0, 0 )
+    -- local menuBarBackdrop = display.newRect( 69, 0, 40, 36 )
+    -- menuBarBackdrop.strokeWidth = 0
+    -- menuBarBackdrop:setFillColor( 1 )
+    -- menuBarBackdrop:setStrokeColor( 0, 0, 0 )
     
-    sceneGroup:insert(menuBarBackdrop)
+    -- sceneGroup:insert(menuBarBackdrop)
 
 
-    local menu_icon = display.newImage("assets/burger.png")
-    menu_icon.x = 68 
-    menu_icon.y = 0
-    menu_icon.alpha = 0.5
-    menu_icon:scale(.2, .2)
-    menu_icon:setFillColor(1, 1, 1)
+    -- local menu_icon = display.newImage("assets/burger.png")
+    -- menu_icon.x = 68 
+    -- menu_icon.y = 0
+    -- menu_icon.alpha = 0.5
+    -- menu_icon:scale(.2, .2)
+    -- menu_icon:setFillColor(1, 1, 1)
     
-    sceneGroup:insert(menu_icon)
+    -- sceneGroup:insert(menu_icon)
 
     local myTextObject = display.newText("Favourites", 102, 242, "Arial", 40)
     myTextObject:setFillColor(1, 1, 1)
@@ -179,10 +180,10 @@ function scene:create( event )
     tile:setFillColor( 156/255, 168/255, 188/255 )
     tile:setStrokeColor( 0, 0, 0 )
 
-    local tile = display.newRect(240, 180, 150, 200 )
-    tile.strokeWidth = 0
-    tile:setFillColor( 156/255, 168/255, 188/255 )
-    tile:setStrokeColor( 0, 0, 0 )
+    local tile2 = display.newRect(240, 180, 150, 200 )
+    tile2.strokeWidth = 0
+    tile2:setFillColor( 156/255, 168/255, 188/255 )
+    tile2:setStrokeColor( 0, 0, 0 )
 
     local maccheese = display.newImage("assets/mac&cheese.jpg")
     maccheese.x = 75 
@@ -194,26 +195,26 @@ function scene:create( event )
     thaiSoup.y = 150
     thaiSoup:scale(.235, .28)
 
-    local myTextObject = display.newText("Mac & Cheese", 102, 242, "Arial", 20)
-    myTextObject:setFillColor(0, 0, 0)
-    myTextObject.x = 75
-    myTextObject.y = 250
+    local maccheese_text = display.newText("Mac & Cheese", 102, 242, "Arial", 20)
+    maccheese_text:setFillColor(0, 0, 0)
+    maccheese_text.x = 75
+    maccheese_text.y = 250
 
-    local myTextObject = display.newText("Thai Soup", 102, 242, "Arial", 20)
-    myTextObject:setFillColor(0, 0, 0)
-    myTextObject.x = 240
-    myTextObject.y = 250
+    local thaiSoup_text = display.newText("Thai Soup", 102, 242, "Arial", 20)
+    thaiSoup_text:setFillColor(0, 0, 0)
+    thaiSoup_text.x = 240
+    thaiSoup_text.y = 250
 
 
-    local panel = widget.newPanel{
-        location = "left",
-        onComplete = panelTransDone,
-        width = display.contentWidth * 0.8,
-        height = 900,
-        speed = 250,
-        inEasing = easing.outBack,
-        outEasing = easing.outCubic
-    }
+    -- local panel = widget.newPanel{
+    --     location = "left",
+    --     onComplete = panelTransDone,
+    --     width = display.contentWidth * 0.8,
+    --     height = 900,
+    --     speed = 250,
+    --     inEasing = easing.outBack,
+    --     outEasing = easing.outCubic
+    -- }
 
 local function scrollListener ( event )
 -- Scroll view listener
@@ -235,75 +236,188 @@ end
 
 
 
-    panel.background = display.newRect( 0, 0, panel.width, panel.height )
-    panel.background:setFillColor( 0, 0.25, 0.5 )
-    panel:insert( panel.background )
+    -- panel.background = display.newRect( 0, 0, panel.width, panel.height )
+    -- panel.background:setFillColor( 0, 0.25, 0.5 )
+    -- panel:insert( panel.background )
 
-    panel.menuButton = display.newRect( 0, -80, panel.width, 60  )
-    panel.menuButton:setFillColor( 0.9, 0.9, 0.9 )
-    panel:insert( panel.menuButton )
+    -- panel.menuButton = display.newRect( 0, -80, panel.width, 60  )
+    -- panel.menuButton:setFillColor( 0.9, 0.9, 0.9 )
+    -- panel:insert( panel.menuButton )
 
-    panel.menuItem = display.newText("User Profile", 0, -80, "Arial", 20)
-    panel.menuItem:setFillColor(0,0,0)
-    panel:insert( panel.menuItem )
+    -- panel.menuItem = display.newText("User Profile", 0, -80, "Arial", 20)
+    -- panel.menuItem:setFillColor(0,0,0)
+    -- panel:insert( panel.menuItem )
 
-    panel.menuButton = display.newRect( 0, -10, panel.width, 60  )
-    panel.menuButton:setFillColor( 0.9, 0.9, 0.9 )
-    panel:insert( panel.menuButton )
+    -- panel.menuButton = display.newRect( 0, -10, panel.width, 60  )
+    -- panel.menuButton:setFillColor( 0.9, 0.9, 0.9 )
+    -- panel:insert( panel.menuButton )
 
-    panel.menuItem = display.newText("Recipes", 0, -10, "Arial", 20)
-    panel.menuItem:setFillColor(0,0,0)
-    panel:insert( panel.menuItem )
+    -- panel.menuItem = display.newText("Recipes", 0, -10, "Arial", 20)
+    -- panel.menuItem:setFillColor(0,0,0)
+    -- panel:insert( panel.menuItem )
 
-    panel.menuButton = display.newRect( 0, 60, panel.width, 60  )
-    panel.menuButton:setFillColor( 0.9, 0.9, 0.9 )
-    panel:insert( panel.menuButton )
+    -- panel.menuButton = display.newRect( 0, 60, panel.width, 60  )
+    -- panel.menuButton:setFillColor( 0.9, 0.9, 0.9 )
+    -- panel:insert( panel.menuButton )
 
-    panel.menuItem = display.newText("Favourites", 0, 60, "Arial", 20)
-    panel.menuItem:setFillColor(0,0,0)
-    panel:insert( panel.menuItem )
+    -- panel.menuItem = display.newText("Favourites", 0, 60, "Arial", 20)
+    -- panel.menuItem:setFillColor(0,0,0)
+    -- panel:insert( panel.menuItem )
 
-    panel.menuButton = display.newRect( 0, 130, panel.width, 60  )
-    panel.menuButton:setFillColor( 0.9, 0.9, 0.9 )
-    panel:insert( panel.menuButton )
+    -- panel.menuButton = display.newRect( 0, 130, panel.width, 60  )
+    -- panel.menuButton:setFillColor( 0.9, 0.9, 0.9 )
+    -- panel:insert( panel.menuButton )
 
-    panel.menuItem = display.newText("7 Day Planner", 0, 130, "Arial", 20)
-    panel.menuItem:setFillColor(0,0,0)
-    panel:insert( panel.menuItem )
-
-
-    panel.backdrop = display.newImage("assets/backdrop.jpg")
-    panel.backdrop.x = 0
-    panel.backdrop.y = -200
-    panel.backdrop:scale(.2, .2)
-    panel:insert( panel.backdrop )
-
-    panel.logo = display.newImage("assets/logo.png")
-    panel.logo.x = 10
-    panel.logo.y = -190
-    panel.logo:scale(.6, .6)
-    panel:insert( panel.logo )
-
-    sceneGroup:insert(panel)
+    -- panel.menuItem = display.newText("7 Day Planner", 0, 130, "Arial", 20)
+    -- panel.menuItem:setFillColor(0,0,0)
+    -- panel:insert( panel.menuItem )
 
 
-    local function navBarReveal (event) 
-        if (navReveal == true) then
-            panel:toFront()
-            search.isVisible = false
+    -- panel.backdrop = display.newImage("assets/backdrop.jpg")
+    -- panel.backdrop.x = 0
+    -- panel.backdrop.y = -200
+    -- panel.backdrop:scale(.2, .2)
+    -- panel:insert( panel.backdrop )
+
+    -- panel.logo = display.newImage("assets/logo.png")
+    -- panel.logo.x = 10
+    -- panel.logo.y = -190
+    -- panel.logo:scale(.6, .6)
+    -- panel:insert( panel.logo )
+
+    -- sceneGroup:insert(panel)
+
+
+    -- local function navBarReveal (event) 
+    --     if (navReveal == true) then
+    --         panel:toFront()
+    --         search.isVisible = false
             
-            panel:show()
+    --         panel:show()
+    --         navReveal = false
+    --     else
+    --         panel:hide()
+    --         search.isVisible = true
+    --         navReveal = true
+    --     end
+    -- end
+
+    -- navReveal = true
+ ---   menu_icon:addEventListener("tap", navBarReveal)
+    ----------------------------------
+    --- DROPDOWN MENU ----------------
+    ----------------------------------
+
+    local myDropdown
+
+
+    local dropdownOptions = {
+        {
+            title     = 'User Profile',
+            action    = function() 
+                            delayedSceneRemoval()
+                            composer.gotoScene("profile")
+                        end 
+        },
+        {
+            title     = 'Recipes',
+            action    = function()
+                            delayedSceneRemoval() 
+                            composer.gotoScene("recipes")
+                        end 
+        },
+        {
+            title     = '7 Day Planner',
+            action    = function() 
+                            native.showAlert('Dropdown', 'Dropdown', {'Ok'})
+                        end 
+        },
+        {
+            title     = 'Health Tracker',
+            action    = function() 
+                            delayedSceneRemoval()
+                            composer.gotoScene("health_tracker")
+                        end 
+        },
+        {
+            title     = 'Group Meal Planner',
+            action    = function() 
+                        end 
+        },
+        {
+            title     = 'Help and Support',
+            action    = function() 
+                        end 
+        },
+        {
+            title     = 'Log Out',
+            action    = function() 
+                            delayedSceneRemoval()
+                            composer.gotoScene("logout.lua")
+                        end 
+        }
+    }
+
+    local button = widget.newButton {
+        width         =   30,
+        height        =   30,
+        defaultFile   =   'assets/burger.png',
+        overFile      =   'assets/burger.png',
+        onEvent       = function(event)
+                            local target = event.target
+                            local phase  = event.phase
+                            if phase == 'began' then
+                                target.alpha = .5
+                            else
+                                target.alpha = 1
+                            end
+                            if phase ==  'ended' then
+                                myDropdown:toggle()
+                            end
+                        end                
+    }
+    button.alpha = 10
+    sceneGroup:insert(button)
+
+    myDropdown = dropdown.new {
+        x            = screen.rightSide - 50,
+        y            = screen.topSide + 50,
+        toggleButton = button,
+        width        = 280,
+        marginTop    = 12,
+        padding      = 20,
+        options      = dropdownOptions
+    }
+    sceneGroup:insert(myDropdown)
+    -- button:addEventListener("tap", navBarReveal)
+
+
+    local function reveal()
+        if (navReveal == true) then
+            maccheese.isVisible = false
+            thaiSoup.isVisible = false
+            thaiSoup_text.isVisible = false
+            maccheese_text.isVisible = false
+            bg.isVisible = false
+            tile.isVisible = false
+            tile2.isVisible = false
+            search.isVisible = false
             navReveal = false
         else
-            panel:hide()
+            maccheese.isVisible = true
+            thaiSoup.isVisible = true
+            maccheese_text.isVisible = true
+            thaiSoup_text.isVisible = true
+            bg.isVisible = true
+            tile.isVisible = true
+            tile2.isVisible = true
             search.isVisible = true
             navReveal = true
         end
     end
 
     navReveal = true
-    menu_icon:addEventListener("tap", navBarReveal)
-
+    button:addEventListener("tap", reveal)
 
 
 end

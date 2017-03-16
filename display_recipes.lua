@@ -114,8 +114,9 @@ function scene:create( event )
         onEvent = handleBack
     }
     )
-    back.y = 480
+    back.y = 490
     back.x = 40
+    sceneGroup:insert(back)
 
 
     local thaisoup_pic = display.newImage("assets/thaisoupcircle.png")
@@ -205,7 +206,8 @@ function scene:create( event )
         {
           title     = 'Saved Recipes',
           action    = function() 
-            native.showAlert('Dropdown', 'Dropdown', {'Ok'})
+            delayedSceneRemoval() 
+            composer.gotoScene("favourites")
           end 
         },
         {
@@ -217,7 +219,8 @@ function scene:create( event )
         {
           title     = 'Health Tracker',
           action    = function() 
-            native.showAlert('Dropdown', 'Dropdown', {'Ok'})
+            delayedSceneRemoval()
+            composer.gotoScene("health_tracker")
           end 
         },
         {
@@ -235,7 +238,8 @@ function scene:create( event )
         {
           title     = 'Log Out',
           action    = function() 
-            native.showAlert('Dropdown', 'Dropdown', {'Ok'})
+            delayedSceneRemoval()
+            composer.gotoScene("logout.lua")
           end 
         }
 
@@ -284,7 +288,7 @@ function scene:create( event )
             y = 270,
             x = 160,
             width = 500,
-            height = 400,  
+            height = 390,  
             scrollWidth = 500,
             scrollHeight = 100,
             hideBackground = false,

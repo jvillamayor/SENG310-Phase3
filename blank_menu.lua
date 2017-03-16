@@ -121,92 +121,9 @@ function scene:create(event)
     }
     sceneGroup:insert(myDropdown)
 
-local dropdownOptions = {
-  {
-    title     = 'User Profile',
-    action    = function() 
-      delayedSceneRemoval()
-      composer.gotoScene("profile")
-    end 
-  },
-  {
-    title     = 'Recipes',
-    action    = function() 
-      delayedSceneRemoval()
-      composer.gotoScene("recipes")
-    end 
-  },
-  {
-    title     = 'Saved Recipes',
-    action    = function() 
-      delayedSceneRemoval()
-      composer.gotoScene("favourites")
-    end 
-  },
-  {
-    title     = '7 Day Planner',
-    action    = function() 
-      native.showAlert('Dropdown', 'Dropdown', {'Ok'})
-    end 
-  },
-  {
-    title     = 'Health Tracker',
-    action    = function() 
-      native.showAlert('Dropdown', 'Dropdown', {'Ok'})
-    end 
-  },
-  {
-    title     = 'Group Meal Planner',
-    action    = function() 
-      native.showAlert('Dropdown', 'Dropdown', {'Ok'})
-    end 
-  },
-  {
-    title     = 'Help and Support',
-    action    = function() 
-      native.showAlert('Dropdown', 'Dropdown', {'Ok'})
-    end 
-  },
-  {
-    title     = 'Log Out',
-    action    = function() 
-      native.showAlert('Dropdown', 'Dropdown', {'Ok'})
-    end 
-  }
 
-}
 
-local button = widget.newButton{
-  width       = 30,
-  height      = 30,
-  defaultFile = 'assets/burger.png',
-  overFile    = 'assets/burger.png',
-  onEvent     = function( event )
-    local target = event.target
-    local phase  = event.phase
-    if phase == 'began' then
-      target.alpha = .5
-    else
-      target.alpha = 1
-      if phase ==  'ended' then
-        myDropdown:toggle()
-      end
-    end
-  end
-}
-button.alpha = 10
 
-myDropdown     = dropdown.new{
-  x            = screen.rightSide - 50,
-  y            = screen.topSide + 50,
-  toggleButton = button,
-  width        = 280,
-  marginTop    = 12,
-  padding      = 20,
-  options      = dropdownOptions
-}
-
-sceneGroup:insert(myDropdown)
 end
 
 

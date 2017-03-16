@@ -209,7 +209,6 @@ function scene:create( event )
             action    = function()
                             delayedSceneRemoval()
                             composer.gotoScene("recipes")
-                            composer.gotoScene("recipes")
                         end 
         }, {
             title     = 'Saved Recipes',

@@ -238,7 +238,8 @@ slider.x = 160
         {
           title     = 'Saved Recipes',
           action    = function() 
-            native.showAlert('Dropdown', 'Dropdown', {'Ok'})
+            delayedSceneRemoval() 
+            composer.gotoScene("favourites")
           end 
         },
         {
@@ -250,7 +251,8 @@ slider.x = 160
         {
           title     = 'Health Tracker',
           action    = function() 
-            native.showAlert('Dropdown', 'Dropdown', {'Ok'})
+            delayedSceneRemoval()
+            composer.gotoScene("health_tracker")
           end 
         },
         {
@@ -268,7 +270,8 @@ slider.x = 160
         {
           title     = 'Log Out',
           action    = function() 
-            native.showAlert('Dropdown', 'Dropdown', {'Ok'})
+            delayedSceneRemoval()
+            composer.gotoScene("logout.lua")
           end 
         }
 
