@@ -384,6 +384,7 @@ function scene:create( event )
 
 
     scrollView:insert( panel )
+    sceneGroup:insert(scrollView)
 
 
 
