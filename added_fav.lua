@@ -37,7 +37,7 @@ function scene:create( event )
 
     local added = display.newImage("assets/added_fav.png")
     added.x = 160
-    added.y = 200
+    added.y = 250
     sceneGroup:insert(added)
 
       local myDropdown
