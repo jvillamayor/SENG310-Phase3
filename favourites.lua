@@ -126,7 +126,6 @@ end
 function scene:create( event )
     local sceneGroup = self.view
 
-
     local bg = display.newRect(display.contentCenterX, display.contentCenterY, display.actualContentWidth, display.actualContentHeight)
     bg:setFillColor(239/255, 240/255, 240/255)
     sceneGroup:insert( bg )
@@ -461,28 +460,28 @@ end
             title     = 'User Profile',
             action    = function() 
                             delayedSceneRemoval() 
-                            composer.gotoScene("profile")
+                            composer.gotoScene("profile", { effect="fade", time= 500 })
                         end 
         },
         {
             title     = 'Recipes',
             action    = function()
                             delayedSceneRemoval() 
-                            composer.gotoScene("recipes")
+                            composer.gotoScene("recipes", { effect="fade", time= 500 })
                         end 
         },
         {
             title     = '7 Day Planner',
             action    = function() 
                             delayedSceneRemoval()
-                            composer.gotoScene("7DayPlanner")
+                            composer.gotoScene("7DayPlanner", { effect="fade", time= 500 })
                         end 
         },
         {
             title     = 'Health Tracker',
             action    = function() 
                             delayedSceneRemoval() 
-                            composer.gotoScene("health_tracker")
+                            composer.gotoScene("health_tracker", { effect="fade", time= 500 })
                         end 
         },
         {
@@ -493,7 +492,7 @@ end
         {
             title     = 'Log Out',
             action    = function() 
-                            composer.gotoScene("logout.lua")
+                            composer.gotoScene("logout", { effect="fade", time= 500 } )
                         end 
         }
     }

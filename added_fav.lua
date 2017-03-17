@@ -35,6 +35,10 @@ end
 function scene:create( event )
     local sceneGroup = self.view
 
+    local bg = display.newRect(display.contentCenterX, display.contentCenterY, display.actualContentWidth, display.actualContentHeight)
+    bg:setFillColor(1, 1, 1)
+    sceneGroup:insert( bg )
+
     local added = display.newImage("assets/added_fav.png")
     added.x = 160
     added.y = 250

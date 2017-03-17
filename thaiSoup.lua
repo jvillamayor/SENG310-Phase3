@@ -28,7 +28,6 @@ local function scrollListener ( event )
         elseif "down" == direction then
             print ("Reached Bottom Limit")
         end
-
         return true
     end
 end
@@ -36,118 +35,118 @@ end
 local scrollView = widget.newScrollView
 {
     left = 0,
-    top = 0,
+    top = -45,
+    bottom = 50,
     width = display.contentWidth,
-    height = display.contentHeight,
-    topPadding = 50,
-    bottomPadding = 50,
+    height = display.contentHeight+85,
+    topPadding = 0,
+    bottomPadding = 0,
     horizontalScrollDisabled = true,
     verticalScrollDisabled = false,
     listener = scrollListener,
-    hideBackground = true
-
+    hideBackground = true,
 }
+
 -- -----------------------------------------------------------------------------------
 -- Scene event functions
 -- -----------------------------------------------------------------------------------
 
-function widget.newPanel( options )
-    local customOptions = options or {}
-    local opt = {}
+-- function widget.newPanel( options )
+--     local customOptions = options or {}
+--     local opt = {}
  
-    opt.location = customOptions.location or "top"
+--     opt.location = customOptions.location or "top"
  
-    local default_width, default_height
-    if ( opt.location == "top" or opt.location == "bottom" ) then
-        default_width = display.contentWidth
-        default_height = display.contentHeight * 0.33
-    else
-        default_width = display.contentWidth * 0.33
-        default_height = display.contentHeight
-    end
+--     local default_width, default_height
+--     if ( opt.location == "top" or opt.location == "bottom" ) then
+--         default_width = display.contentWidth
+--         default_height = display.contentHeight * 0.33
+--     else
+--         default_width = display.contentWidth * 0.33
+--         default_height = display.contentHeight
+--     end
  
-    opt.width = customOptions.width or default_width
-    opt.height = customOptions.height or default_height
+--     opt.width = customOptions.width or default_width
+--     opt.height = customOptions.height or default_height
  
-    opt.speed = customOptions.speed or 500
-    opt.inEasing = customOptions.inEasing or easing.linear
-    opt.outEasing = customOptions.outEasing or easing.linear
+--     opt.speed = customOptions.speed or 500
+--     opt.inEasing = customOptions.inEasing or easing.linear
+--     opt.outEasing = customOptions.outEasing or easing.linear
  
-    if ( customOptions.onComplete and type(customOptions.onComplete) == "function" ) then
-        opt.listener = customOptions.onComplete
-    else 
-        opt.listener = nil
-    end
+--     if ( customOptions.onComplete and type(customOptions.onComplete) == "function" ) then
+--         opt.listener = customOptions.onComplete
+--     else 
+--         opt.listener = nil
+--     end
  
-    local container = display.newContainer( opt.width, opt.height )
+--     local container = display.newContainer( opt.width, opt.height )
  
-    if ( opt.location == "left" ) then
-        container.anchorX = 1.0
-        container.x = display.screenOriginX
-        container.anchorY = 0.5
-        container.y = display.contentCenterY
-    elseif ( opt.location == "right" ) then
-        container.anchorX = 0.0
-        container.x = display.actualContentWidth
-        container.anchorY = 0.5
-        container.y = display.contentCenterY
-    elseif ( opt.location == "top" ) then
-        container.anchorX = 0.5
-        container.x = display.contentCenterX
-        container.anchorY = 1.0
-        container.y = display.screenOriginY
-    else
-        container.anchorX = 0.5
-        container.x = display.contentCenterX
-        container.anchorY = 0.0
-        container.y = display.actualContentHeight
-    end
+--     if ( opt.location == "left" ) then
+--         container.anchorX = 1.0
+--         container.x = display.screenOriginX
+--         container.anchorY = 0.5
+--         container.y = display.contentCenterY
+--     elseif ( opt.location == "right" ) then
+--         container.anchorX = 0.0
+--         container.x = display.actualContentWidth
+--         container.anchorY = 0.5
+--         container.y = display.contentCenterY
+--     elseif ( opt.location == "top" ) then
+--         container.anchorX = 0.5
+--         container.x = display.contentCenterX
+--         container.anchorY = 1.0
+--         container.y = display.screenOriginY
+--     else
+--         container.anchorX = 0.5
+--         container.x = display.contentCenterX
+--         container.anchorY = 0.0
+--         container.y = display.actualContentHeight
+--     end
  
-    function container:show()
-        local options = {
-            time = opt.speed,
-            transition = opt.inEasing
-        }
-        if ( opt.listener ) then
-            options.onComplete = opt.listener
-            self.completeState = "shown"
-        end
-        if ( opt.location == "top" ) then
-            options.y = display.screenOriginY + opt.height
-        elseif ( opt.location == "bottom" ) then
-            options.y = display.actualContentHeight - opt.height
-        elseif ( opt.location == "left" ) then
-            options.x = display.screenOriginX + opt.width
-        else
-            options.x = display.actualContentWidth - opt.width
-        end 
-        transition.to( self, options )
-    end
+--     function container:show()
+--         local options = {
+--             time = opt.speed,
+--             transition = opt.inEasing
+--         }
+--         if ( opt.listener ) then
+--             options.onComplete = opt.listener
+--             self.completeState = "shown"
+--         end
+--         if ( opt.location == "top" ) then
+--             options.y = display.screenOriginY + opt.height
+--         elseif ( opt.location == "bottom" ) then
+--             options.y = display.actualContentHeight - opt.height
+--         elseif ( opt.location == "left" ) then
+--             options.x = display.screenOriginX + opt.width
+--         else
+--             options.x = display.actualContentWidth - opt.width
+--         end 
+--         transition.to( self, options )
+--     end
  
-    function container:hide()
-        local options = {
-            time = opt.speed,
-            transition = opt.outEasing
-        }
-        if ( opt.listener ) then
-            options.onComplete = opt.listener
-            self.completeState = "hidden"
-        end
-        if ( opt.location == "top" ) then
-            options.y = display.screenOriginY
-        elseif ( opt.location == "bottom" ) then
-            options.y = display.actualContentHeight
-        elseif ( opt.location == "left" ) then
-            options.x = display.screenOriginX
-        else
-            options.x = display.actualContentWidth
-        end 
-        transition.to( self, options )
-    end
+--     function container:hide()
+--         local options = {
+--             time = opt.speed,
+--             transition = opt.outEasing
+--         }
+--         if ( opt.listener ) then
+--             options.onComplete = opt.listener
+--             self.completeState = "hidden"
+--         end
+--         if ( opt.location == "top" ) then
+--             options.y = display.screenOriginY
+--         elseif ( opt.location == "bottom" ) then
+--             options.y = display.actualContentHeight
+--         elseif ( opt.location == "left" ) then
+--             options.x = display.screenOriginX
+--         else
+--             options.x = display.actualContentWidth
+--         end 
+--         transition.to( self, options )
+--     end
  
-    return container
-end
-
+--     return container
+-- end
 
 
 -- create()
@@ -155,9 +154,8 @@ function scene:create( event )
     local sceneGroup = self.view
 
     local bg = display.newRect(display.contentCenterX, display.contentCenterY, display.actualContentWidth, display.actualContentHeight)
-    bg:setFillColor(0, 0, 0)
-    sceneGroup:insert(bg)
-    scrollView:insert( bg )
+    bg:setFillColor(239/255, 240/255, 240/255)
+    sceneGroup:insert( bg )
 
 
  --[[  local menu_icon = display.newImage("assets/burger.png")
@@ -171,55 +169,119 @@ function scene:create( event )
     sceneGroup:insert(menu_icon)]]
 
 
-    local tile = display.newRect(display.contentCenterX, display.contentCenterY+110, display.actualContentWidth, 1500 )
-    tilestrokeWidth = 0
-    tile:setFillColor( 1, 1, 1 )
-    tile:setStrokeColor( 0, 0, 0 )
-    scrollView:insert( tile )
+    -- local tile = display.newRect(display.contentCenterX, display.contentCenterY+130, display.actualContentWidth, 1500 )
+    -- tilestrokeWidth = 0
+    -- tile:setFillColor( 1, 1, 1 )
+    -- tile:setStrokeColor( 0, 0, 0 )
+    -- scrollView:insert( tile )
 
 
     local thaiSoup = display.newImage("assets/thaiSoup.jpg")
     thaiSoup.x = display.contentCenterX 
-    thaiSoup.y = display.contentCenterY-170
+    thaiSoup.y = display.contentCenterY-100
     thaiSoup:scale(1, .60)
     scrollView:insert( thaiSoup )
 
     local myTextObject = display.newText("Easy Thai Soup", 102, 242, "Arial", 30)
     myTextObject:setFillColor(0, 0, 0)
     myTextObject.x = display.contentCenterX
-    myTextObject.y = display.contentCenterY
+    myTextObject.y = display.contentCenterY+80
     scrollView:insert( myTextObject )
     
     local stars = display.newImage("assets/stars.png")
     stars.x = display.contentCenterX-90
-    stars.y = display.contentCenterY+45
+    stars.y = display.contentCenterY+125
     stars:scale(.1, .1)
     scrollView:insert( stars )
 
-    local thumbsUp = display.newImage("assets/thumbs-up.png")
+    local thumbsUp = display.newImage("assets/like.png")
     thumbsUp.x = display.contentCenterX+70
-    thumbsUp.y = display.contentCenterY+45
-    thumbsUp:scale(.1, .1)
+    thumbsUp.y = display.contentCenterY+125
+    thumbsUp:scale(.045, .045)
     scrollView:insert( thumbsUp )
 
-    local thumbsDown = display.newImage("assets/thumbs-down.png")
+    local glow = display.newImage("assets/like_glow.png")
+    glow.x = display.contentCenterX+70
+    glow.y = display.contentCenterY+125
+    glow:scale(.05, .05)
+    glow.alpha=0
+    scrollView:insert( glow )
+
+    local thumbsDown = display.newImage("assets/dislike.png")
     thumbsDown.x = display.contentCenterX+120
-    thumbsDown.y = display.contentCenterY+45
-    thumbsDown:scale(.1, .1)
+    thumbsDown.y = display.contentCenterY+125
+    thumbsDown:scale(.045, .045)
     scrollView:insert( thumbsDown )
+
+    local sulk = display.newImage("assets/dislike_glow.png")
+    sulk.x = display.contentCenterX+120
+    sulk.y = display.contentCenterY+125
+    sulk:scale(.05, .05)
+    sulk.alpha=0
+    scrollView:insert( sulk )
+
+    local function like ()
+        if flag == true then
+            scrollView:insert( thumbsUp )
+            transition.scaleTo( thumbsUp, { xScale=0.05, yScale=0.05, time=50 } )
+            transition.dissolve( thumbsUp, glow, 50, 100 )
+            flag = false
+        else
+            scrollView:insert( glow )
+            transition.scaleTo( glow, { xScale=0.045, yScale=0.045, time=50 } )
+            local thumbsUp = display.newImage("assets/like.png")
+            thumbsUp.x = display.contentCenterX+70
+            thumbsUp.y = display.contentCenterY+125
+            thumbsUp:scale(.045, .045)
+            scrollView:insert( thumbsUp )
+            transition.dissolve( glow, thumbsUp, 50, 100 )
+            flag = true
+        end
+    end
+
+
+    local function dislike ()
+        if flag == true then
+            scrollView:insert( thumbsDown )
+            transition.scaleTo( thumbsDown, { xScale=0.05, yScale=0.05, time=50 } )
+            transition.dissolve( thumbsDown, sulk, 50, 100 )
+            flag = false
+        else
+            scrollView:insert( sulk )
+            transition.scaleTo( sulk, { xScale=0.045, yScale=0.045, time=50 } )
+            local thumbsDown = display.newImage("assets/dislike.png")
+            thumbsDown.x = display.contentCenterX+120
+            thumbsDown.y = display.contentCenterY+125
+            thumbsDown:scale(.045, .045)
+            scrollView:insert( thumbsDown )
+            transition.dissolve( sulk, thumbsDown, 50, 100 )
+            flag = true
+        end
+    end
+
+    flag = true
+    thumbsUp:addEventListener("tap", like)
+    glow:addEventListener("tap", like)
+
+    thumbsDown:addEventListener("tap", dislike)
+    sulk:addEventListener("tap", dislike)
+
+
+    
+local function shiftDown (y, i)
 
     local myTextObject = display.newText("Total Time", 102, 242, "Arial", 18)
     myTextObject:setFillColor(0, 0, 0)
     myTextObject.anchorX = 0
     myTextObject.x = display.contentCenterX-140
-    myTextObject.y = display.contentCenterY+90
+    myTextObject.y = display.contentCenterY+120+y
     scrollView:insert( myTextObject )
 
-    local myTextObject = display.newText("15 min", 102, 242, "Arial", 18)
+    local myTextObject = display.newText("15 Min", 102, 242, "Arial", 18)
     myTextObject:setFillColor(0, 0, 0)
     myTextObject.anchorX = 1
     myTextObject.x = display.contentCenterX+140
-    myTextObject.y = display.contentCenterY+90
+    myTextObject.y = display.contentCenterY+120+y
     scrollView:insert( myTextObject )
 
 
@@ -227,14 +289,14 @@ function scene:create( event )
     myTextObject:setFillColor(0, 0, 0)
     myTextObject.anchorX = 0
     myTextObject.x = display.contentCenterX-140
-    myTextObject.y = display.contentCenterY+120
+    myTextObject.y = display.contentCenterY+150+y
     scrollView:insert( myTextObject )
 
     local myTextObject = display.newText("5 Min", 102, 242, "Arial", 18)
     myTextObject:setFillColor(0, 0, 0)
     myTextObject.anchorX = 1
     myTextObject.x = display.contentCenterX+140
-    myTextObject.y = display.contentCenterY+120
+    myTextObject.y = display.contentCenterY+150+y
     scrollView:insert( myTextObject )
 
 
@@ -242,105 +304,105 @@ function scene:create( event )
     myTextObject:setFillColor(0, 0, 0)
     myTextObject.anchorX = 0
     myTextObject.x = display.contentCenterX-140
-    myTextObject.y = display.contentCenterY+150
+    myTextObject.y = display.contentCenterY+180+y
     scrollView:insert( myTextObject )
 
     local myTextObject = display.newText("10 Min", 102, 242, Arial, 18)
     myTextObject:setFillColor(0, 0, 0)
     myTextObject.anchorX = 1
     myTextObject.x = display.contentCenterX+140
-    myTextObject.y = display.contentCenterY+150
+    myTextObject.y = display.contentCenterY+180+y
     scrollView:insert( myTextObject )
 
     local myTextObject = display.newText("Ingredients", 102, 242, native.systemFontBold, 18)
     myTextObject:setFillColor(0, 0, 0)
     myTextObject.anchorX = 0
     myTextObject.x = display.contentCenterX-140
-    myTextObject.y = display.contentCenterY+200
+    myTextObject.y = display.contentCenterY+200+y+i
     scrollView:insert( myTextObject )
 
     local myTextObject = display.newText("2 Tbps of Vegetable Oil", 102, 242, native.systemFont, 14)
     myTextObject:setFillColor(0, 0, 0)
     myTextObject.anchorX = 0
     myTextObject.x = display.contentCenterX-140
-    myTextObject.y = display.contentCenterY+225
+    myTextObject.y = display.contentCenterY+225+y+i
     scrollView:insert( myTextObject )
 
     local myTextObject = display.newText("2 Cloves of Garlic, finely chopped", 102, 242, native.systemFont, 14)
     myTextObject:setFillColor(0, 0, 0)
     myTextObject.anchorX = 0
     myTextObject.x = display.contentCenterX-140
-    myTextObject.y = display.contentCenterY+245
+    myTextObject.y = display.contentCenterY+245+y+i
     scrollView:insert( myTextObject )
 
     local myTextObject = display.newText("1 Tbsp of Ginger, minced or grated", 102, 242, native.systemFont, 14)
     myTextObject:setFillColor(0, 0, 0)
     myTextObject.anchorX = 0
     myTextObject.x = display.contentCenterX-140
-    myTextObject.y = display.contentCenterY+265
+    myTextObject.y = display.contentCenterY+265+y+i
     scrollView:insert( myTextObject )
 
     local myTextObject = display.newText("2 Tbsp of Thai Red Curry Paste", 102, 242, native.systemFont, 14)
     myTextObject:setFillColor(0, 0, 0)
     myTextObject.anchorX = 0
     myTextObject.x = display.contentCenterX-140
-    myTextObject.y = display.contentCenterY+285
+    myTextObject.y = display.contentCenterY+285+y+i
     scrollView:insert( myTextObject )
 
     local myTextObject = display.newText("1 14.5oz can of Light Coconut Milk", 102, 242, native.systemFont, 14)
     myTextObject:setFillColor(0, 0, 0)
     myTextObject.anchorX = 0
     myTextObject.x = display.contentCenterX-140
-    myTextObject.y = display.contentCenterY+305
+    myTextObject.y = display.contentCenterY+305+y+i
     scrollView:insert( myTextObject )
 
     local myTextObject = display.newText("4 cups of Vegetable Stock", 102, 242, native.systemFont, 14)
     myTextObject:setFillColor(0, 0, 0)
     myTextObject.anchorX = 0
     myTextObject.x = display.contentCenterX-140
-    myTextObject.y = display.contentCenterY+325
+    myTextObject.y = display.contentCenterY+325+y+i
     scrollView:insert( myTextObject )
 
     local myTextObject = display.newText("3 Baby Bok Choy, quartered and washed", 102, 242, native.systemFont, 14)
     myTextObject:setFillColor(0, 0, 0)
     myTextObject.anchorX = 0
     myTextObject.x = display.contentCenterX-140
-    myTextObject.y = display.contentCenterY+345
+    myTextObject.y = display.contentCenterY+345+y+i
     scrollView:insert( myTextObject )
 
     local myTextObject = display.newText("6oz of Thin Rice Noodles or any other kind of noodle you prefer", 102, 242, native.systemFont, 14)
     myTextObject:setFillColor(0, 0, 0)
     myTextObject.anchorX = 0
     myTextObject.x = display.contentCenterX-140
-    myTextObject.y = display.contentCenterY+365
+    myTextObject.y = display.contentCenterY+365+y+i
     scrollView:insert( myTextObject )
 
     local myTextObject = display.newText("About 1/4 cup of Fresh Cilantro", 102, 242, native.systemFont, 14)
     myTextObject:setFillColor(0, 0, 0)
     myTextObject.anchorX = 0
     myTextObject.x = display.contentCenterX-140
-    myTextObject.y = display.contentCenterY+385
+    myTextObject.y = display.contentCenterY+385+y+i
     scrollView:insert( myTextObject )
 
     local myTextObject = display.newText("Few Sprigs of Fresh Mint", 102, 242, native.systemFont, 14)
     myTextObject:setFillColor(0, 0, 0)
     myTextObject.anchorX = 0
     myTextObject.x = display.contentCenterX-140
-    myTextObject.y = display.contentCenterY+405
+    myTextObject.y = display.contentCenterY+405+y+i
     scrollView:insert( myTextObject )
 
     local myTextObject = display.newText("Green Onions, finely sliced", 102, 242, native.systemFont, 14)
     myTextObject:setFillColor(0, 0, 0)
     myTextObject.anchorX = 0
     myTextObject.x = display.contentCenterX-140
-    myTextObject.y = display.contentCenterY+425
+    myTextObject.y = display.contentCenterY+425+y+i
     scrollView:insert( myTextObject )
 
     local myTextObject = display.newText("Directions", 102, 242, native.systemFontBold, 18)
     myTextObject:setFillColor(0, 0, 0)
     myTextObject.anchorX = 0
     myTextObject.x = display.contentCenterX-140
-    myTextObject.y = display.contentCenterY+500
+    myTextObject.y = display.contentCenterY+500+y
     scrollView:insert( myTextObject )
 
     local step1 = "1) In a saucepan, add the oil, garlic and ginger and sauté together for a few minutes, add the curry paste, stir it in and allow it to cook for a couple minutes."
@@ -348,7 +410,7 @@ function scene:create( event )
     myTextObject:setFillColor(0, 0, 0)
     myTextObject.anchorX = 0
     myTextObject.x = display.contentCenterX-140
-    myTextObject.y = display.contentCenterY+550
+    myTextObject.y = display.contentCenterY+550+y
     scrollView:insert( myTextObject )
 
     local step2 = "2) Add the vegetable stock and coconut milk and bring to a boil. Allow to simmer for 5 minutes, add the rice noodles and bok choy and cook the mixture for 3 minutes or until the noodles are tender (check the package instructions for cooking time on the noodles but generally, thin rice noodles take between 2 to 4 minutes to cook)"
@@ -356,7 +418,7 @@ function scene:create( event )
     myTextObject:setFillColor(0, 0, 0)
     myTextObject.anchorX = 0
     myTextObject.x = display.contentCenterX-140
-    myTextObject.y = display.contentCenterY+670
+    myTextObject.y = display.contentCenterY+670+y
     scrollView:insert( myTextObject )
 
     local step3 = "3) Serve the soup topped with fresh cilantro, mint and scallions."
@@ -364,26 +426,25 @@ function scene:create( event )
     myTextObject:setFillColor(0, 0, 0)
     myTextObject.anchorX = 0
     myTextObject.x = display.contentCenterX-140
-    myTextObject.y = display.contentCenterY+770
+    myTextObject.y = display.contentCenterY+770+y
     scrollView:insert( myTextObject )
+end
+
+shiftDown(50, 25)
+
+    -- local panel = widget.newPanel {
+    --     location = "left",
+    --     onComplete = panelTransDone,
+    --     width = display.contentWidth * 0.8,
+    --     height = 900,
+    --     speed = 250,
+    --     inEasing = easing.outBack,
+    --     outEasing = easing.outCubic
+    -- }
 
 
 
-
-
-    local panel = widget.newPanel {
-        location = "left",
-        onComplete = panelTransDone,
-        width = display.contentWidth * 0.8,
-        height = 900,
-        speed = 250,
-        inEasing = easing.outBack,
-        outEasing = easing.outCubic
-    }
-
-
-
-    scrollView:insert( panel )
+    -- scrollView:insert( panel )
     sceneGroup:insert(scrollView)
 
 
