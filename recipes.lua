@@ -159,6 +159,33 @@ local slider = widget.newSlider(
 slider.y = 235
 slider.x = 160
 
+local sliderSheet2 = graphics.newImageSheet( "scroll_button.png", options )
+ 
+-- Create the widget
+local slider2 = widget.newSlider(
+    {
+        sheet = sliderSheet2,
+        top = 200,
+        left= 50,
+        width = 270,
+        listener = sliderListener
+    }
+)
+slider2.y = 320
+slider2.x = 160
+
+local slider3 = widget.newSlider(
+    {
+        sheet = sliderSheet2,
+        top = 200,
+        left= 50,
+        width = 270,
+        listener = sliderListener
+    }
+)
+slider3.y = 400
+slider3.x = 160
+
  --   local background = display.newImageRect( "assets/scroll_button.png", 30, 30 )
   ---  background.y = 25
    --- background.x = 160
@@ -166,6 +193,8 @@ slider.x = 160
     sceneGroup:insert(scrollView)
     sceneGroup:insert(scrollView)
     sceneGroup:insert(slider)
+    sceneGroup:insert(slider2)
+    sceneGroup:insert(slider3)
 
     --- DROPDOWN MENU
       local myDropdown_cuisine
@@ -251,7 +280,7 @@ slider.x = 160
           title     = '7 Day Planner',
           action    = function() 
             delayedSceneRemoval()
-      composer.gotoScene("7DayPlanner")
+            composer.gotoScene("7DayPlanner")
           end 
         },
         {
@@ -317,11 +346,15 @@ slider.x = 160
         if (navReveal == true) then
             scrollView.isVisible = false
             slider.isVisible = false
+            slider2.isVisible = false
+            slider3.isVisible = false
             update.isVisible = false
             navReveal = false
         else
             scrollView.isVisible = true
             slider.isVisible = true
+            slider2.isVisible = true
+            slider3.isVisible = false
             update.isVisible = true
             navReveal = true
         end
