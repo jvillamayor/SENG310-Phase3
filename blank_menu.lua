@@ -58,7 +58,8 @@ function scene:create(event)
         {
             title     = '7 Day Planner',
             action    = function() 
-                            native.showAlert('Dropdown', 'Dropdown', {'Ok'})
+                            delayedSceneRemoval() 
+                            composer.gotoScene("7DayPlanner")
                         end 
         },
         {
@@ -71,7 +72,6 @@ function scene:create(event)
         {
             title     = 'Group Meal Planner',
             action    = function() 
-                            native.showAlert('Dropdown', 'Dropdown', {'Ok'})
                         end 
         },
         {

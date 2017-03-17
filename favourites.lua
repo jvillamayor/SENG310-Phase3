@@ -435,30 +435,29 @@ end
         {
             title     = 'User Profile',
             action    = function() 
+                            delayedSceneRemoval() 
                             composer.gotoScene("profile")
                         end 
         },
         {
             title     = 'Recipes',
             action    = function()
+                            delayedSceneRemoval() 
                             composer.gotoScene("recipes")
                         end 
         },
         {
             title     = '7 Day Planner',
             action    = function() 
-                            native.showAlert('Dropdown', 'Dropdown', {'Ok'})
+                            delayedSceneRemoval()
+                            composer.gotoScene("7DayPlanner")
                         end 
         },
         {
             title     = 'Health Tracker',
             action    = function() 
+                            delayedSceneRemoval() 
                             composer.gotoScene("health_tracker")
-                        end 
-        },
-        {
-            title     = 'Group Meal Planner',
-            action    = function() 
                         end 
         },
         {

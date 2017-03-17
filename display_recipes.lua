@@ -29,6 +29,7 @@ function scene:create( event )
     sceneGroup:insert(myTextObject)
 
     local search = native.newTextField(160, 350, 220, 20)
+    
     search.inputType = "search"
     search.placeholder = "Search Ingredients"
     search.y = 50
@@ -138,6 +139,21 @@ function scene:create( event )
     soup.x = 142
     soup.y = 70
     sceneGroup:insert(soup)
+
+
+      local add_soup = widget.newButton{
+        width       = 25,
+        height      = 25,
+        defaultFile = 'assets/add_button.png',
+        overFile    = 'assets/add_button.png',
+        onEvent     = function()
+            composer.gotoScene("added_fav")
+        end
+      }
+      add_soup.alpha = 10
+      add_soup.x = 280
+      add_soup.y = 70
+      sceneGroup:insert(add_soup)
     
 
 
@@ -149,7 +165,10 @@ function scene:create( event )
     Terriyaki:setFillColor(0,0,0)
     Terriyaki.x = 169
     Terriyaki.y = 140
-
+    local addterriyaki = display.newImage("assets/add_button.png")
+    addterriyaki:scale(0.045,0.045)
+    addterriyaki.x = 280
+    addterriyaki.y = 140
 
     local friedrice_pic = display.newImage("assets/friedrice.png")
     friedrice_pic.x = 35
@@ -159,6 +178,10 @@ function scene:create( event )
     friedrice:setFillColor(0,0,0)
     friedrice.x = 154
     friedrice.y = 210
+    local addfriedrice = display.newImage("assets/add_button.png")
+    addfriedrice:scale(0.045,0.045)
+    addfriedrice.x = 280
+    addfriedrice.y = 210
 
 
     local beef_pic = display.newImage("assets/beef.png")
@@ -169,6 +192,10 @@ function scene:create( event )
     beef:setFillColor(0,0,0)
     beef.x = 132
     beef.y = 280
+    local addbeef = display.newImage("assets/add_button.png")
+    addbeef:scale(0.045,0.045)
+    addbeef.x = 280
+    addbeef.y = 280
 
 
     local miso_pic = display.newImage("assets/miso.png")
@@ -179,15 +206,23 @@ function scene:create( event )
     miso:setFillColor(0,0,0)
     miso.x = 123
     miso.y = 350
+    local addmiso = display.newImage("assets/add_button.png")
+    addmiso:scale(0.045,0.045)
+    addmiso.x = 280
+    addmiso.y = 350
 
     local tuna_pic = display.newImage("assets/tuna.png")
     tuna_pic.x = 35
     tuna_pic.y = 420
     tuna_pic:scale(0.25,0.25)
-    local tuna = display.newText("Sesame Seared Ahi Tuna", 160, 240, "Avenir",17.5)
+    local tuna = display.newText("Sesame Seared Ahi Tuna", 160, 240, "Avenir",16.5)
     tuna:setFillColor(0,0,0)
-    tuna.x = 176
+    tuna.x = 170
     tuna.y = 420
+    local addtuna = display.newImage("assets/add_button.png")
+    addtuna:scale(0.045,0.045)
+    addtuna.x = 280
+    addtuna.y = 420
 
 
      
@@ -199,6 +234,7 @@ function scene:create( event )
         {
           title     = 'User Profile',
           action    = function() 
+          delayedSceneRemoval()
           composer.gotoScene("profile")
           end 
         },
@@ -211,8 +247,9 @@ function scene:create( event )
         },
         {
           title     = '7 Day Planner',
-          action    = function() 
-            native.showAlert('Dropdown', 'Dropdown', {'Ok'})
+          action    = function()
+            delayedSceneRemoval()
+            composer.gotoScene("7DayPlanner")
           end 
         },
         {
@@ -223,15 +260,9 @@ function scene:create( event )
           end 
         },
         {
-          title     = 'Group Meal Planner',
-          action    = function() 
-            native.showAlert('Dropdown', 'Dropdown', {'Ok'})
-          end 
-        },
-        {
           title     = 'Help and Support',
           action    = function() 
-            native.showAlert('Dropdown', 'Dropdown', {'Ok'})
+            composer.gotoScene("help_support")
           end 
         },
         {
@@ -303,16 +334,22 @@ function scene:create( event )
     -- Create a image and insert it into the scroll view
     scrollView:insert(beef)
     scrollView:insert(beef_pic)
+    scrollView:insert(addbeef)
     scrollView:insert(friedrice)
     scrollView:insert(friedrice_pic)
+    scrollView:insert(addfriedrice)
     scrollView:insert(Terriyaki)
     scrollView:insert(Terriyaki_pic)
+    scrollView:insert(addterriyaki)
     scrollView:insert(soup)
     scrollView:insert(thaisoup_pic)
     scrollView:insert(miso)
     scrollView:insert(miso_pic)
+    scrollView:insert(addmiso)
     scrollView:insert(tuna)
     scrollView:insert(tuna_pic)
+    scrollView:insert(addtuna)
+    scrollView:insert(add_soup)
     sceneGroup:insert(scrollView)
      
 
