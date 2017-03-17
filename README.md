@@ -1,4 +1,4 @@
 # SENG310-Phase3
-UVic school ass't
-Written in lua withe the Corona SDK.
-To run, open 'main.lua' with Corona SDK (free, for both MacOS and Windows).
+A food tracking and recipe finding app, for UVic SENG 310, 2017.
+Written in lua with the Corona SDK. Ready for deployment on Android and iOS.
+To run and use, open 'main.lua' with Corona SDK (free, for both MacOS and Windows).
