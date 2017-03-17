@@ -12,6 +12,12 @@ local function changeScenes()
     composer.gotoScene("menu2", {effect="slideLeft", time=500})
 end
 
+local function delayedSceneRemoval()
+    local function removeSceneListener(event)
+        composer.removeScene("recipes")
+    end
+    timer.performWithDelay(500, removeSceneListener)
+end
  
 local function scrollListener ( event )
 -- Scroll view listener
