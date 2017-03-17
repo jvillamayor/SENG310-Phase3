@@ -17,7 +17,7 @@ print("In Scene: help_support.lua")
 -- Function to delay the removal of the scene, smoothing out the transition between scenes
 local function delayedSceneRemoval()
     local function removeSceneListener(event)
-        composer.removeScene("profile")
+        composer.removeScene("help_support")
     end
     timer.performWithDelay(500, removeSceneListener)
 end
@@ -119,21 +119,29 @@ function scene:create( event )
 
     local dropdownOptions = {
         {
+            title     = 'User Profile',
+            action    = function()
+                            delayedSceneRemoval()
+                            composer.gotoScene("profile")
+                        end 
+        },
+        {
             title     = 'Recipes',
             action    = function()
                             delayedSceneRemoval()
-                            composer.gotoScene("recipes")
                             composer.gotoScene("recipes")
                         end 
         }, {
             title     = 'Saved Recipes',
             action    = function() 
-                            native.showAlert('Dropdown', 'Dropdown', {'Ok'})
+                            delayedSceneRemoval()
+      composer.gotoScene("favourites")
                         end 
         }, {
             title     = '7 Day Planner',
             action    = function() 
-                            native.showAlert('Dropdown', 'Dropdown', {'Ok'})
+                            delayedSceneRemoval()
+      composer.gotoScene("7DayPlanner")
                         end 
         }, {
             title     = 'Health Tracker',
@@ -141,17 +149,8 @@ function scene:create( event )
                             delayedSceneRemoval()
                             composer.gotoScene("health_tracker")
                         end 
-        }, {
-            title     = 'Group Meal Planner',
-            action    = function() 
-                            native.showAlert('Dropdown', 'Dropdown', {'Ok'})
-                        end 
-        }, {
-            title     = 'Help and Support',
-            action    = function() 
-                            native.showAlert('Dropdown', 'Dropdown', {'Ok'})
-                        end 
-        }, {
+        }, 
+        {
             title     = 'Log Out',
             action    = function() 
                             delayedSceneRemoval()

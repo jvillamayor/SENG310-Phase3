@@ -213,23 +213,20 @@ function scene:create( event )
         }, {
             title     = 'Saved Recipes',
             action    = function() 
-                            native.showAlert('Dropdown', 'Dropdown', {'Ok'})
+                             delayedSceneRemoval()
+                            composer.gotoScene("favourites")
                         end 
         }, {
             title     = '7 Day Planner',
             action    = function() 
-                            native.showAlert('Dropdown', 'Dropdown', {'Ok'})
+                            delayedSceneRemoval()
+                            composer.gotoScene("7DayPlanner")
                         end 
         }, {
             title     = 'Health Tracker',
             action    = function() 
                             delayedSceneRemoval()
                             composer.gotoScene("health_tracker")
-                        end 
-        }, {
-            title     = 'Group Meal Planner',
-            action    = function() 
-                            native.showAlert('Dropdown', 'Dropdown', {'Ok'})
                         end 
         }, {
             title     = 'Help and Support',

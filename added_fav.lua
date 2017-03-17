@@ -88,7 +88,7 @@ function scene:create( event )
           title     = 'Log Out',
           action    = function() 
             delayedSceneRemoval()
-            composer.gotoScene("logout")
+            composer.gotoScene("login")
           end 
         }
 

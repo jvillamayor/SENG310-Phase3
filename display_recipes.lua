@@ -273,7 +273,7 @@ function scene:create( event )
           title     = 'Log Out',
           action    = function() 
             delayedSceneRemoval()
-            composer.gotoScene("logout.lua")
+            composer.gotoScene("login")
           end 
         }
 

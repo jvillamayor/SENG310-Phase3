@@ -70,11 +70,6 @@ function scene:create(event)
                         end 
         },
         {
-            title     = 'Group Meal Planner',
-            action    = function() 
-                        end 
-        },
-        {
             title     = 'Help and Support',
             action    = function() 
                             delayedSceneRemoval()

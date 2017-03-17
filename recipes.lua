@@ -246,7 +246,8 @@ slider.x = 160
         {
           title     = '7 Day Planner',
           action    = function() 
-            native.showAlert('Dropdown', 'Dropdown', {'Ok'})
+            delayedSceneRemoval()
+      composer.gotoScene("7DayPlanner")
           end 
         },
         {
@@ -257,22 +258,17 @@ slider.x = 160
           end 
         },
         {
-          title     = 'Group Meal Planner',
-          action    = function() 
-            native.showAlert('Dropdown', 'Dropdown', {'Ok'})
-          end 
-        },
-        {
           title     = 'Help and Support',
           action    = function() 
-            native.showAlert('Dropdown', 'Dropdown', {'Ok'})
+            delayedSceneRemoval()
+      composer.gotoScene("help_suport")
           end 
         },
         {
           title     = 'Log Out',
           action    = function() 
             delayedSceneRemoval()
-            composer.gotoScene("logout.lua")
+            composer.gotoScene("login")
           end 
         }
 

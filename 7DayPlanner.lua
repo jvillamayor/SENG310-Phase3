@@ -227,33 +227,24 @@ function scene:create( event )
         end 
       },
       {
-        title     = '7 Day Planner',
-        action    = function() 
-          native.showAlert('Dropdown', 'Dropdown', {'Ok'})
-        end 
-      },
-      {
         title     = 'Health Tracker',
         action    = function() 
-          native.showAlert('Dropdown', 'Dropdown', {'Ok'})
-        end 
-      },
-      {
-        title     = 'Group Meal Planner',
-        action    = function() 
-          native.showAlert('Dropdown', 'Dropdown', {'Ok'})
+          delayedSceneRemoval()
+      composer.gotoScene("health_tracker")
         end 
       },
       {
         title     = 'Help and Support',
         action    = function() 
-          native.showAlert('Dropdown', 'Dropdown', {'Ok'})
+          delayedSceneRemoval()
+      composer.gotoScene("help_support")
         end 
       },
       {
         title     = 'Log Out',
         action    = function() 
-          native.showAlert('Dropdown', 'Dropdown', {'Ok'})
+          delayedSceneRemoval()
+      composer.gotoScene("login")
         end 
       }
 
