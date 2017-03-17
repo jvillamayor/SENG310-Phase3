@@ -49,7 +49,7 @@ function scene:create( event )
                                         270,  125
                                         )
     sodium_line:setStrokeColor(0.8, 0.4, 0.35, 1)
-    sodium_line.strokeWidth = 2
+    sodium_line.strokeWidth = 2.5
 
     local sodium_label = display.newText("SODIUM Intake", 160, 240, "Avenir", 15)
     sodium_label:setFillColor(0.8, 0.4, 0.35)
@@ -74,6 +74,11 @@ function scene:create( event )
     sodium_toggle.x = 30
     sodium_toggle.y = 300
 
+    local sodium_level = display.newText("HIGH", 160, 240, "Avenir", 15)
+    sodium_level:setFillColor(1, 0, 0)
+    sodium_level.x = 275
+    sodium_level.y = 300
+
     local carb_line = display.newLine( 20,  225,
                                          70,  120,
                                         120,  130,
@@ -82,12 +87,12 @@ function scene:create( event )
                                         270,  130
                                         )
     carb_line:setStrokeColor(0.1, 0.1, 1, 1)
-    carb_line.strokeWidth = 2
+    carb_line.strokeWidth = 2.5
 
     local carb_label = display.newText("CARB Intake", 160, 240, "Avenir", 15)
     carb_label:setFillColor(0.1, 0.1, 1)
     carb_label.x = 92
-    carb_label.y = 325
+    carb_label.y = 330
 
     local carb_toggle = widget.newSwitch( {
             left = 250,
@@ -105,7 +110,12 @@ function scene:create( event )
     } )
     carb_toggle:scale(0.5,0.5)
     carb_toggle.x = 30
-    carb_toggle.y = 325
+    carb_toggle.y = 330
+
+    local carb_level = display.newText("MEDIUM", 160, 240, "Avenir", 15)
+    carb_level:setFillColor(1, 1, 0)
+    carb_level.x = 275
+    carb_level.y = 330
 
     local fat_line = display.newLine( 20,  200,
                                          70,  180,
@@ -115,14 +125,12 @@ function scene:create( event )
                                         270,  150
                                         )
     fat_line:setStrokeColor(1, 0.1, 1, 1)
-    fat_line.strokeWidth = 2
-    -- sceneGroup:insert(sodium_line)
+    fat_line.strokeWidth = 2.5
 
     local fat_label = display.newText("FAT Intake", 160, 240, "Avenir", 15)
     fat_label:setFillColor(1,0.1,1)
     fat_label.x = 87
-    fat_label.y = 350
-    -- sceneGroup:insert(peanut)
+    fat_label.y = 360
 
     local fat_toggle = widget.newSwitch( {
             left = 250,
@@ -140,23 +148,12 @@ function scene:create( event )
     } )
     fat_toggle:scale(0.5,0.5)
     fat_toggle.x = 30
-    fat_toggle.y = 350
-
-    local sodium_level = display.newText("HIGH", 160, 240, "Avenir", 15)
-    sodium_level:setFillColor(1, 0, 0)
-    sodium_level.x = 275
-    sodium_level.y = 300
-
-    local carb_level = display.newText("MEDIUM", 160, 240, "Avenir", 15)
-    carb_level:setFillColor(1, 1, 0)
-    carb_level.x = 275
-    carb_level.y = 325
+    fat_toggle.y = 360
 
     local fat_level = display.newText("LOW", 160, 240, "Avenir", 15)
     fat_level:setFillColor(0, 1, 0)
     fat_level.x = 275
-    fat_level.y = 350
-
+    fat_level.y = 360
 
 
 -- Scroll functionality ----------------------
