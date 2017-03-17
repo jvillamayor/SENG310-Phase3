@@ -26,6 +26,10 @@ end
 function scene:create( event )
     local sceneGroup = self.view
 
+    local bg = display.newRect(display.contentCenterX, display.contentCenterY, display.actualContentWidth, display.actualContentHeight)
+    bg:setFillColor(1, 1, 1)
+    sceneGroup:insert( bg )
+
     local myTextObject = display.newText("Profile", 160, 240, "Avenir", 20)
     myTextObject:setFillColor(0,0,0)
     myTextObject.y = 5
@@ -47,11 +51,12 @@ function scene:create( event )
     email.y = 205
     sceneGroup:insert(email)
 
-    local emailinput = native.newTextField(160, 240, 220, 30)
+    local emailinput = native.newTextField(160, 240, 200, 30)
     emailinput.inputType = "user@gmail.com"
     emailinput.placeholder = "user@gmail.com"
     emailinput.font = native.newFont("Avenir")
-    emailinput.x = 200
+    emailinput.anchorX=0
+    emailinput.x = 100
     emailinput.y = 205
     sceneGroup:insert(emailinput)
 
@@ -61,11 +66,12 @@ function scene:create( event )
     age.y = 240
     sceneGroup:insert(age)
 
-    local ageinput = native.newTextField(160, 240, 220, 30)
+    local ageinput = native.newTextField(160, 240, 90, 30)
     ageinput.inputType = "11/10/1994"
     ageinput.placeholder = "11/10/1994"
     ageinput.font = native.newFont("Avenir")
-    ageinput.x = 200
+    ageinput.anchorX=0
+    ageinput.x = 100
     ageinput.y = 240
     sceneGroup:insert(ageinput)
 
@@ -75,11 +81,12 @@ function scene:create( event )
     gender.y = 275
     sceneGroup:insert(gender)
 
-    local genderinput = native.newTextField(160, 240, 220, 30)
+    local genderinput = native.newTextField(160, 240, 90, 30)
     genderinput.inputType = "Male"
     genderinput.placeholder = "Male"
     genderinput.font = native.newFont("Avenir")
-    genderinput.x = 220
+    genderinput.anchorX=0
+    genderinput.x = 100
     genderinput.y = 275
     sceneGroup:insert(genderinput)
 
@@ -89,25 +96,27 @@ function scene:create( event )
     weight.y = 310
     sceneGroup:insert(weight)
 
-    local weightinput = native.newTextField(160, 240, 220, 30)
+    local weightinput = native.newTextField(160, 240, 70, 30)
     weightinput.inputType = "87kg"
     weightinput.placeholder = "87kg"
     weightinput.font = native.newFont("Avenir")
-    weightinput.x = 220
+    weightinput.anchorX=0
+    weightinput.x = 100
     weightinput.y = 310
     sceneGroup:insert(weightinput)
 
     local height = display.newText("Height", 160, 240, "Avenir", 20)
     height:setFillColor(0,0,0)
-    height.x = 55
+    height.x = 58
     height.y = 345
     sceneGroup:insert(height)
 
-    local heightinput = native.newTextField(160, 240, 220, 30)
+    local heightinput = native.newTextField(160, 240, 70, 30)
     heightinput.inputType = "178cm"
     heightinput.placeholder = "178cm"
     heightinput.font = native.newFont("Avenir")
-    heightinput.x = 220
+    weightinput.anchorX=0
+    heightinput.x = 135
     heightinput.y = 345
     sceneGroup:insert(heightinput)
 

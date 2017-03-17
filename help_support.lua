@@ -26,6 +26,10 @@ end
 function scene:create( event )
     local sceneGroup = self.view
 
+    local bg = display.newRect(display.contentCenterX, display.contentCenterY, display.actualContentWidth, display.actualContentHeight)
+    bg:setFillColor(239/255, 240/255, 240/255)
+    sceneGroup:insert( bg )
+
     local header = display.newText("Help and Support", 160, 5, "Avenir", 20)
     header:setFillColor(0,0,0)
     sceneGroup:insert(header)
