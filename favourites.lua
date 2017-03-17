@@ -9,7 +9,7 @@ local widget = require("widget")
 -- the scene is removed entirely (not recycled) via "composer.removeScene()"
 -- -----------------------------------------------------------------------------------
 local function changeScenes()
-    composer.gotoScene("menu2", {effect="slideLeft", time=500})
+    composer.gotoScene("favourites", {effect="slideLeft", time=500})
 end
 
 local function delayedSceneRemoval()
@@ -308,31 +308,37 @@ function scene:create( event )
     tile.strokeWidth = 0
     tile:setFillColor( 156/255, 168/255, 188/255 )
     tile:setStrokeColor( 0, 0, 0 )
+    sceneGroup:insert(tile)
 
     local tile2 = display.newRect(240, 180, 150, 200 )
     tile2.strokeWidth = 0
     tile2:setFillColor( 156/255, 168/255, 188/255 )
     tile2:setStrokeColor( 0, 0, 0 )
+    sceneGroup:insert(tile2)
 
     local maccheese = display.newImage("assets/mac&cheese.jpg")
     maccheese.x = 80 
     maccheese.y = 148
     maccheese:scale(.188, .3)
+    sceneGroup:insert(maccheese)
 
     local thaiSoup = display.newImage("assets/thaiSoup.jpg")
     thaiSoup.x = 240 
     thaiSoup.y = 148
     thaiSoup:scale(.235, .28)
+    sceneGroup:insert(thaiSoup)
 
     local maccheese_text = display.newText("Mac & Cheese", 102, 242, "Arial", 20)
     maccheese_text:setFillColor(0, 0, 0)
     maccheese_text.x = 80
     maccheese_text.y = 250
+    sceneGroup:insert(maccheese_text)
 
     local thaiSoup_text = display.newText("Thai Soup", 102, 242, "Arial", 20)
     thaiSoup_text:setFillColor(0, 0, 0)
     thaiSoup_text.x = 240
     thaiSoup_text.y = 250
+    sceneGroup:insert(thaiSoup_text)
 
     local function newScene (event)
         delayedSceneRemoval()
