@@ -14,9 +14,13 @@ local scene = composer.newScene()
 
 local function delayedSceneRemoval()
     local function removeSceneListener(event)
-        composer.removeScene("recipes")
+        composer.removeScene("display_recipes")
     end
     timer.performWithDelay(500, removeSceneListener)
+end
+
+local function changeScenes()
+    composer.gotoScene("added_fav", {effect="slideLeft", time=500})
 end
    
 
@@ -99,8 +103,8 @@ function scene:create( event )
       composer.gotoScene("recipes")
     end
 
-    local function handleSoup (event)
-      composer.gotoScene("favourites") 
+    local function handleSoup ()
+      composer.gotoScene("thaiSoup", {effect="slideLeft", time=500})
     end
 
      local back = widget.newButton(
@@ -146,9 +150,9 @@ function scene:create( event )
         height      = 25,
         defaultFile = 'assets/add_button.png',
         overFile    = 'assets/add_button.png',
-        onEvent     = function()
-            composer.gotoScene("added_fav")
-        end
+        -- onEvent     = function()
+        --     composer.gotoScene("added_fav")
+        -- end
       }
       add_soup.alpha = 10
       add_soup.x = 280
@@ -370,6 +374,7 @@ function scene:create( event )
     navReveal = true
     button:addEventListener("tap", reveal)
     button_az:addEventListener("tap", reveal)
+    add_soup:addEventListener("tap", changeScenes)
 
 
     end

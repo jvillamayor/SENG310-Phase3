@@ -8,13 +8,11 @@ local scene = composer.newScene()
 -- Code outside of the scene event functions below will only be executed ONCE unless
 -- the scene is removed entirely (not recycled) via "composer.removeScene()"
 -- -----------------------------------------------------------------------------------
-local function changeScenes()
-    composer.gotoScene("menu2", {effect="slideLeft", time=500})
-end
+
 
 local function delayedSceneRemoval()
     local function removeSceneListener(event)
-        composer.removeScene("recipes")
+        composer.removeScene("thaiSoup")
     end
     timer.performWithDelay(500, removeSceneListener)
 end
@@ -487,31 +485,29 @@ local dropdownOptions = {
   {
     title     = '7 Day Planner',
     action    = function() 
-      native.showAlert('Dropdown', 'Dropdown', {'Ok'})
+      delayedSceneRemoval()
+      composer.gotoScene("7DayPlanner")
     end 
   },
   {
     title     = 'Health Tracker',
     action    = function() 
-      native.showAlert('Dropdown', 'Dropdown', {'Ok'})
-    end 
-  },
-  {
-    title     = 'Group Meal Planner',
-    action    = function() 
-      native.showAlert('Dropdown', 'Dropdown', {'Ok'})
+      delayedSceneRemoval()
+      composer.gotoScene("health_tracker")
     end 
   },
   {
     title     = 'Help and Support',
     action    = function() 
-      native.showAlert('Dropdown', 'Dropdown', {'Ok'})
+      delayedSceneRemoval()
+      composer.gotoScene("help_support")
     end 
   },
   {
     title     = 'Log Out',
     action    = function() 
-      native.showAlert('Dropdown', 'Dropdown', {'Ok'})
+      delayedSceneRemoval()
+      composer.gotoScene("login")
     end 
   }
 

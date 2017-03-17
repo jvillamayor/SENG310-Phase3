@@ -12,6 +12,13 @@ local function changeScenes()
     composer.gotoScene("menu2", {effect="slideLeft", time=500})
 end
 
+local function delayedSceneRemoval()
+    local function removeSceneListener(event)
+        composer.removeScene("favourites")
+    end
+    timer.performWithDelay(500, removeSceneListener)
+end
+
 -- -----------------------------------------------------------------------------------
 -- Scene event functions
 -- -----------------------------------------------------------------------------------
