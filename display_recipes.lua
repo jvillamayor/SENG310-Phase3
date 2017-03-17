@@ -27,6 +27,10 @@ end
 function scene:create( event )
     local sceneGroup = self.view
 
+    local bg = display.newRect(display.contentCenterX, display.contentCenterY, display.actualContentWidth, display.actualContentHeight)
+    bg:setFillColor(1, 1, 1)
+    sceneGroup:insert( bg )
+
     local myTextObject = display.newText("Recipes", 160, 240, "Avenir", 20)
     myTextObject:setFillColor(0,0,0)
     myTextObject.y = 5

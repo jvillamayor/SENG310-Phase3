@@ -125,11 +125,13 @@ end
 -- create()
 function scene:create( event )
     local sceneGroup = self.view
-    local group = display.newGroup()
+
 
     local bg = display.newRect(display.contentCenterX, display.contentCenterY, display.actualContentWidth, display.actualContentHeight)
-    bg:setFillColor(1, 1, 1)
-    sceneGroup:insert(bg)
+    bg:setFillColor(239/255, 240/255, 240/255)
+    sceneGroup:insert( bg )
+
+    local group = display.newGroup()
 
     local search = native.newTextField(200, 0, 180, 20)
     sceneGroup:insert(search)
@@ -331,6 +333,16 @@ function scene:create( event )
     thaiSoup_text:setFillColor(0, 0, 0)
     thaiSoup_text.x = 240
     thaiSoup_text.y = 250
+
+    local function newScene (event)
+        delayedSceneRemoval()
+        composer.gotoScene("thaiSoup", {effect="slideLeft", time=500})
+    end
+
+
+    thaiSoup:addEventListener( "touch", newScene )
+
+
 
 
     -- local panel = widget.newPanel{
